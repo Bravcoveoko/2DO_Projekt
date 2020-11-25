@@ -15,6 +15,10 @@
 </style>
 
 <p id="text">asiaisasiajsa</p>
+<div>
+    <p><input type="text" id="datepicker"></p>
+</div>
+
 
 <a href="#" id="newNote2">Create a new note and get id</a><br>
 <!--<a href="#" id="printArr">printArr</a>-->
@@ -34,10 +38,97 @@
 <!--<div id="draggable">-->
 <!--</div>-->
 
+<script>
+    $( function() {
+        $( "#datepicker" ).datepicker({
+            showWeek: true,
+            firstDay: 1
+        });
+    } );
+</script>
 
 
 
 <script>
+
+    function callAJAXSetAllActivities() {
+        
+    }
+
+    function callAJAXPositionUpdate(xPos, yPos, id) {
+
+        var parts = id.match(/uuid-(\d+)/);
+
+        $.ajax({
+            url : 'includes/activity_update_position.php',
+            type : 'post',
+            dataType: "json",
+            data : {
+                id : parts[1],
+                xPos : xPos,
+                yPos : yPos
+            },
+
+            success : function (data) {
+                console.log('Je updatnuty');
+            },
+
+            error : function () {
+                console.log("neni updatnuty");
+            }
+
+        });
+    }
+
+    function callAJAXColorUpdate(id, color) {
+        $.ajax({
+            url : 'includes/activity_update_color.php',
+            type : 'post',
+            dataType: "json",
+            data : {
+                id : id,
+                color : color
+            },
+
+            success : function (data) {
+                console.log('Je updatnuty');
+            },
+
+            error : function () {
+                console.log("neni updatnuty");
+            }
+
+        });
+    }
+
+    function createActivity(newID) {
+
+        var newNote = $('<div class="sticky" id="myid"><b>Note:</b>This is new</div>').draggable({containment: "#draggable"});
+        var newColorPicker = $('<input type="text" class="my_color_picker" id="0">').colorpicker({ok: function () {
+                //newNote.css('background', rgb())
+
+                if (jQuery.isEmptyObject($(this).val())) {
+                    console.log("null");
+                }else {
+                    callAJAXColorUpdate(newID, "#" + $(this).val());
+                }
+
+                newNote.css('background-color', "#" + $(this).val());
+            }});
+
+        newNote.attr('id', ("uuid-" + newID));
+        newColorPicker.attr('id', ("uuid-" + newID));
+
+        newNote.append(newColorPicker);
+
+        newNote.css({"top" : "100px", "left" : "100px", "position": "absolute"}).appendTo("#draggable");
+
+    }
+
+    let newID = 0;
+
+    // var arr = [];
+
     $(document).ready(function () {
         $('#newNote2').click(function(e) {
             // var newNote = $('<div class="sticky"><b>Note:</b>This is new</div>');
@@ -45,37 +136,45 @@
             //     containment: "#draggable"
             // })
             // $("#draggable").append(newNote);
-            var newNote = $('<div class="sticky"><b>Note:</b>This is new</div>').draggable({containment: "#draggable"});
-            var newColorPicker = $('<input type="text" class="my_color_picker" id="my_color_picker">').colorpicker({ok: function () {
-                    //newNote.css('background', rgb())
-                    newNote.css('background', "#" + $(this).val());
-                }});
 
-            newNote.append(newColorPicker);
+             $.ajax({
+                url : 'includes/create_new_activity.php',
+                type : 'post',
+                dataType: "json",
+                data : {
+                    userName : 'Text'
+                },
+                success : function (data) {
+                    // $('#text').html(data['filename']
+                    // console.log(data);
+                    newID = data.id;
+                    // console.log("nove id: " + newID);
 
-            newNote.css({"top" : "100px", "left" : "100px", "position": "absolute"}).appendTo("#draggable");
+                    createActivity(newID);
+
+                },
+
+                error : function(xhr, status, error) {
+                    // var err = JSON.parse(xhr.responseText);
+                    console.log(status);
+                    console.log(error);
+                },
+
+                complete : function (data) {
+                    console.log(data);
+                }
+
+            });
+
+             // console.log("KONECNE: " + newID);
+
+
+
 
 
             // $.post('includes/activity_update.php', {username : "text"}, function() {
             //     console.log('ajax maybe');
             // });
-
-            $.ajax({
-                url : 'includes/create_new_activity.php',
-                type : 'post',
-                dataType: "JSON",
-                data : {
-                    userName : 'Text'
-                },
-                success : function (data) {
-                    $('#text').html(data['filename'])
-                },
-                error : function () {
-                    console.log("ajax error");
-                }
-
-            });
-
 
 
 
@@ -87,6 +186,10 @@
 <script>
     $("#draggable").on("mouseup", ".sticky", function() {
         console.log($(this).position().left, $(this).position().top);
+        console.log($(this).attr('id'));
+        console.log($(this).css("background-color"));
+
+        callAJAXPositionUpdate($(this).position().left, $(this).position().top, $(this).attr('id'));
     })
 </script>
 
@@ -98,16 +201,29 @@
         containment: "#draggable"
     });
 
-    $("#my_color_picker").colorpicker({
-        open: function (event) {
-            console.log(event);
+    $(".my_color_picker").colorpicker({
+        ok: function (event) {
+            console.log("ok");
         }
     });
 </script>
 
 <script>
-    $('#draggable').on("click", '#my_color_picker', function () {
-        console.log("klikol som na color pikcer");
+    $('#draggable').on("click", '.my_color_picker', function () {
+        var color = $(this).val();
+        if (jQuery.isEmptyObject(color)) {
+            console.log("null");
+        }else {
+            console.log("neni");
+        }
+        // $.ajax({
+        //         url : 'includes/activity_update.php',
+        //         type : 'post',
+        //         dataType: "json",
+        //         data : {
+        //             color : $(this).val();
+        //         },
+        //     });
     });
 
 </script>

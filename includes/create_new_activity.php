@@ -1,7 +1,8 @@
 <?php
 
-include 'includes/config.php';
+include 'config.php';
 
+//echo json_encode(['id' => 'nieco']);
 $user_id = $_COOKIE['userID'];
 
 $date = date('Y-m-d H:i:s');
@@ -16,14 +17,26 @@ if (empty($conn)) {
     return;
 }
 
+$sqlGetLatestAct = "SELECT * FROM activities WHERE user_id = " . $_COOKIE['userID'] . " ORDER BY created_at DESC LIMIT 1";
+
 
 $res = mysqli_query($conn, $sqlInsert);
 
-if ($res) {
-    echo 'novy zaznam v aktivity';
-}else {
-    echo 'ee';
-}
+
+
+//if ($res) {
+//    echo 'novy zaznam v aktivity';
+//}else {
+//    echo 'ee';
+//}
+
+$actResult = mysqli_query($conn, $sqlGetLatestAct);
+
+$activity = mysqli_fetch_assoc($actResult);
+
+//echo $activity['id'];
+
+echo json_encode(['id' => $activity['id']]);
 
 
 
