@@ -51,8 +51,78 @@
 
 <script>
 
+    function foo(id, xPos, yPos, color) {
+        var setNote, setColorPicker;
+
+        setNote = $('<div class="sticky" id="0"><b>Note:</b>This is new</div>').draggable({containment: "#draggable"});
+        setColorPicker = $('<input type="text" class="my_color_picker" id="0">').colorpicker({ok: function () {
+                //newNote.css('background', rgb())
+
+                if (jQuery.isEmptyObject($(this).val())) {
+                    console.log("null");
+                }else {
+                    callAJAXColorUpdate($(this), "#" + $(this).val());
+                    console.log("daco");
+                }
+
+                setNote.css('background-color', "#" + $(this).val());
+            }});
+
+        setNote.attr('id', ("uuid-" + id));
+        setColorPicker.attr('id', ("uuid-" + id));
+
+        setNote.append(setColorPicker);
+
+        setNote.css('background-color', color);
+
+        setNote.css({"top" : (yPos + "px"), "left" : (xPos + "px"), "position": "absolute"}).appendTo("#draggable");
+    }
+
+    function setActivities(data) {
+        var len = data.length;
+
+
+        for(let i = 0; i < len; i++) {
+
+            (function () {
+                var id = data[i]['id'];
+                var xPos = data[i]['x_position'];
+                var yPos = data[i]['y_position'];
+                var color = data[i]['color'];
+                console.log(id + " " + xPos + " " + yPos + " " + color);
+
+                foo(id, xPos, yPos, color);
+
+                console.log("set");
+            })();
+
+
+
+        }
+    }
+
     function callAJAXSetAllActivities() {
-        
+        $.ajax({
+            url : 'includes/activity_setup.php',
+            type : 'post',
+            dataType: "json",
+            // data : {
+            //     id : parts[1],
+            //     xPos : xPos,
+            //     yPos : yPos
+            // },
+
+            success : function (data) {
+                console.log(data);
+                setActivities(data);
+            },
+
+            error : function () {
+                // console.log("neni updatnuty");
+            }
+
+        });
+
     }
 
     function callAJAXPositionUpdate(xPos, yPos, id) {
@@ -70,32 +140,36 @@
             },
 
             success : function (data) {
-                console.log('Je updatnuty');
+                // console.log('Je updatnuty');
             },
 
             error : function () {
-                console.log("neni updatnuty");
+                // console.log("neni updatnuty");
             }
 
         });
     }
 
-    function callAJAXColorUpdate(id, color) {
+    function callAJAXColorUpdate(that, color) {
+        console.log(that);
+        var parts = that.attr('id').match(/uuid-(\d+)/);
+
+
         $.ajax({
             url : 'includes/activity_update_color.php',
             type : 'post',
             dataType: "json",
             data : {
-                id : id,
+                id : parts[1],
                 color : color
             },
 
             success : function (data) {
-                console.log('Je updatnuty');
+                // console.log('Je updatnuty');
             },
 
             error : function () {
-                console.log("neni updatnuty");
+                // console.log("neni updatnuty");
             }
 
         });
@@ -110,7 +184,7 @@
                 if (jQuery.isEmptyObject($(this).val())) {
                     console.log("null");
                 }else {
-                    callAJAXColorUpdate(newID, "#" + $(this).val());
+                    callAJAXColorUpdate($(this), "#" + $(this).val());
                 }
 
                 newNote.css('background-color', "#" + $(this).val());
@@ -130,6 +204,10 @@
     // var arr = [];
 
     $(document).ready(function () {
+
+        callAJAXSetAllActivities();
+
+
         $('#newNote2').click(function(e) {
             // var newNote = $('<div class="sticky"><b>Note:</b>This is new</div>');
             // newNote.draggable ({
@@ -185,9 +263,9 @@
 
 <script>
     $("#draggable").on("mouseup", ".sticky", function() {
-        console.log($(this).position().left, $(this).position().top);
-        console.log($(this).attr('id'));
-        console.log($(this).css("background-color"));
+        //console.log($(this).position().left, $(this).position().top);
+        //console.log($(this).attr('id'));
+        //console.log($(this).css("background-color"));
 
         callAJAXPositionUpdate($(this).position().left, $(this).position().top, $(this).attr('id'));
     })
@@ -212,9 +290,9 @@
     $('#draggable').on("click", '.my_color_picker', function () {
         var color = $(this).val();
         if (jQuery.isEmptyObject(color)) {
-            console.log("null");
+            //console.log("null");
         }else {
-            console.log("neni");
+           // console.log("neni");
         }
         // $.ajax({
         //         url : 'includes/activity_update.php',

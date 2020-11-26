@@ -5,6 +5,8 @@ include 'config.php';
 $id = $_POST['id'];
 $color = $_POST['color'];
 
+//echo $id . " : " . $color;
+
 $sqlActivityUpdate = "UPDATE activities SET color = '$color' WHERE id = '$id'";
 
 if (empty($conn)) {
@@ -14,4 +16,4 @@ if (empty($conn)) {
 
 $res = mysqli_query($conn, $sqlActivityUpdate);
 
-echo json_encode(['id' => 'Ahoj']);
+echo $id . " : " . $color;

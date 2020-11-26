@@ -15,4 +15,5 @@ if (empty($conn)) {
 
 $res = mysqli_query($conn, $sqlActivityUpdate);
 
+
 echo json_encode(['id' => 'Ahoj']);
