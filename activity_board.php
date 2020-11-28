@@ -19,6 +19,10 @@
     <p><input type="text" id="datepicker"></p>
 </div>
 
+<div id="dialog" title="Basic dialog">
+    <textarea id="textbox" type="text" name="textbox" style="width: 260px; height: 100px; resize: none;">Lorem ipsum</textarea>
+</div>
+
 
 <a href="#" id="newNote2">Create a new note and get id</a><br>
 <!--<a href="#" id="printArr">printArr</a>-->
@@ -26,13 +30,13 @@
 
 
 <!--<div class="container">-->
-    <div id="draggable">
-<!--        <p class="dr">Hello1</p>-->
-<!--        <p class="dr">Hello2</p>-->
-<!--        <p class="dr">Hello3</p>-->
-<!--        <p class="dr">Hello4</p>-->
-<!--        <p class="dr">Hello5</p>-->
-    </div>
+<div id="draggable">
+    <!--        <p class="dr">Hello1</p>-->
+    <!--        <p class="dr">Hello2</p>-->
+    <!--        <p class="dr">Hello3</p>-->
+    <!--        <p class="dr">Hello4</p>-->
+    <!--        <p class="dr">Hello5</p>-->
+</div>
 <!--</div>-->
 
 <!--<div id="draggable">-->
@@ -54,7 +58,7 @@
     function foo(id, xPos, yPos, color) {
         var setNote, setColorPicker;
 
-        setNote = $('<div class="sticky" id="0"><b>Note:</b>This is new</div>').draggable({containment: "#draggable"});
+        setNote = $('<div class="sticky" id="0"><b>Note:</b><p>HHeewehwuehwuehwuehuehuehwuehuwheuwheuwheuweuweuwheuwheuwehu</p></div>').draggable({containment: "#draggable"});
         setColorPicker = $('<input type="text" class="my_color_picker" id="0">').colorpicker({ok: function () {
                 //newNote.css('background', rgb())
 
@@ -106,11 +110,6 @@
             url : 'includes/activity_setup.php',
             type : 'post',
             dataType: "json",
-            // data : {
-            //     id : parts[1],
-            //     xPos : xPos,
-            //     yPos : yPos
-            // },
 
             success : function (data) {
                 console.log(data);
@@ -175,9 +174,14 @@
         });
     }
 
+    // HHeewehwuehwuehwuehuehuehwuehuwheuwheuwheuweuweuwheuwheuwehuaaaaaaaaaaaa
+
     function createActivity(newID) {
 
-        var newNote = $('<div class="sticky" id="myid"><b>Note:</b>This is new</div>').draggable({containment: "#draggable"});
+        var newNote = $('<div class="sticky" id="myid"><b>Note</b><p>HHeewehwuehwuehwuehuehuehwuehuwheuwheuwheuweuweuwheuwheuwehu</p></div>').draggable({containment: "#draggable"});
+
+        var editTextIcon = $('<i class="fa fa-pencil" aria-hidden="true" style="font-size: 20px"></i>');
+
         var newColorPicker = $('<input type="text" class="my_color_picker" id="0">').colorpicker({ok: function () {
                 //newNote.css('background', rgb())
 
@@ -192,8 +196,10 @@
 
         newNote.attr('id', ("uuid-" + newID));
         newColorPicker.attr('id', ("uuid-" + newID));
+        editTextIcon.attr('id', ("uuid-" + newID));
 
         newNote.append(newColorPicker);
+        newNote.append(editTextIcon);
 
         newNote.css({"top" : "100px", "left" : "100px", "position": "absolute"}).appendTo("#draggable");
 
@@ -209,13 +215,8 @@
 
 
         $('#newNote2').click(function(e) {
-            // var newNote = $('<div class="sticky"><b>Note:</b>This is new</div>');
-            // newNote.draggable ({
-            //     containment: "#draggable"
-            // })
-            // $("#draggable").append(newNote);
 
-             $.ajax({
+            $.ajax({
                 url : 'includes/create_new_activity.php',
                 type : 'post',
                 dataType: "json",
@@ -238,83 +239,49 @@
                     console.log(error);
                 },
 
-                complete : function (data) {
-                    console.log(data);
-                }
-
             });
-
-             // console.log("KONECNE: " + newID);
-
-
-
-
-
-            // $.post('includes/activity_update.php', {username : "text"}, function() {
-            //     console.log('ajax maybe');
-            // });
-
-
-
 
         });
     });
 </script>
 
 <script>
-    $("#draggable").on("mouseup", ".sticky", function() {
-        //console.log($(this).position().left, $(this).position().top);
-        //console.log($(this).attr('id'));
-        //console.log($(this).css("background-color"));
+    $( function() {
+        $( "#dialog" ).dialog({
+            autoOpen: false,
+            modal: true,
+            title: "Edit your activity",
+            show: { effect: "blind", duration: 600 },
+            buttons: [
+                {
+                    text: "OK",
+                    click: function() {
+                        $( this ).dialog( "close" );
+                    }
+                },
+                {
+                    text: "Close",
+                    click: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
 
+            ]
+        });
+    } );
+</script>
+
+<script>
+    $("#draggable").on("mouseup", ".sticky", function() {
         callAJAXPositionUpdate($(this).position().left, $(this).position().top, $(this).attr('id'));
+    })
+
+    $("#draggable").on("click", ".fa", function() {
+        console.log($(this))
+        $( "#dialog" ).dialog( "open" );
+
     })
 </script>
 
 
-
-
-<script>
-    $( ".sticky" ).draggable({
-        containment: "#draggable"
-    });
-
-    $(".my_color_picker").colorpicker({
-        ok: function (event) {
-            console.log("ok");
-        }
-    });
-</script>
-
-<script>
-    $('#draggable').on("click", '.my_color_picker', function () {
-        var color = $(this).val();
-        if (jQuery.isEmptyObject(color)) {
-            //console.log("null");
-        }else {
-           // console.log("neni");
-        }
-        // $.ajax({
-        //         url : 'includes/activity_update.php',
-        //         type : 'post',
-        //         dataType: "json",
-        //         data : {
-        //             color : $(this).val();
-        //         },
-        //     });
-    });
-
-</script>
-
-
-
-<script>
-    // $(document).ready(function() {
-    //     $(function() {
-    //         $("#my_color_picker").colorpicker();
-    //     });
-    // });
-</script>
-
 </body>
-

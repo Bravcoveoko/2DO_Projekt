@@ -8,6 +8,11 @@
 <link rel="stylesheet" href="myCSS/normalize.css">
 <link rel="stylesheet" href="myCSS/loginCSS.css">
 
+
+<!--Font awesome-->
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+
+
 <!--JS-->
 <script src="jqueryUI/external/jquery/jquery.js"></script>
 <script src="jqueryUI/jquery-ui.js"></script>
