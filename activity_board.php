@@ -14,13 +14,19 @@
     /*}*/
 </style>
 
+<div style="display: none;" id="tmp"></div>
+
+<audio id="sound">
+    <source src="pokrcenie.mp3" type="audio/ogg">
+</audio>
+
 <p id="text">asiaisasiajsa</p>
 <div>
     <p><input type="text" id="datepicker"></p>
 </div>
 
 <div id="dialog" title="Basic dialog">
-    <textarea id="textbox" type="text" name="textbox" style="width: 260px; height: 100px; resize: none;">Lorem ipsum</textarea>
+    <textarea id="myArea" style="width: 260px; height: 100px;"></textarea>
 </div>
 
 
@@ -35,7 +41,7 @@
     <!--        <p class="dr">Hello2</p>-->
     <!--        <p class="dr">Hello3</p>-->
     <!--        <p class="dr">Hello4</p>-->
-    <!--        <p class="dr">Hello5</p>-->
+<!--            <p class="dr">Hello5</p>-->
 </div>
 <!--</div>-->
 
@@ -80,6 +86,30 @@
         setNote.css('background-color', color);
 
         setNote.css({"top" : (yPos + "px"), "left" : (xPos + "px"), "position": "absolute"}).appendTo("#draggable");
+    }
+
+    function callAJAXDeleteActivity(id) {
+        var parts = id.match(/uuid-(\d+)/);
+
+        $.ajax({
+            url : 'includes/activity_remove.php',
+            type : 'post',
+            dataType: "json",
+            data : {
+                id : parts[1],
+            },
+
+            success : function () {
+                console.log('Vymazany');
+            },
+
+            error : function () {
+                console.log("neni vymazany");
+            }
+
+        });
+
+        $(("#" + id)).remove();
     }
 
     function setActivities(data) {
@@ -149,6 +179,32 @@
         });
     }
 
+    function callAJAXContentUpdate(id) {
+        var parts = id.match(/uuid-(\d+)/);
+
+        $.ajax({
+            url : 'includes/activity_update_content.php',
+            type : 'post',
+            dataType: "json",
+            data : {
+                id : parts[1],
+                content : $('#myArea').val()
+            },
+
+            success : function () {
+                console.log('Je content');
+
+            },
+
+            error : function () {
+                console.log("neni content");
+            }
+
+        });
+
+    }
+
+
     function callAJAXColorUpdate(that, color) {
         console.log(that);
         var parts = that.attr('id').match(/uuid-(\d+)/);
@@ -182,6 +238,8 @@
 
         var editTextIcon = $('<i class="fa fa-pencil" aria-hidden="true" style="font-size: 20px"></i>');
 
+        var removeIcon = $('<i class="fa fa-times" aria-hidden="true" style="font-size: 20px; left: 130px;"></i>');
+
         var newColorPicker = $('<input type="text" class="my_color_picker" id="0">').colorpicker({ok: function () {
                 //newNote.css('background', rgb())
 
@@ -197,9 +255,11 @@
         newNote.attr('id', ("uuid-" + newID));
         newColorPicker.attr('id', ("uuid-" + newID));
         editTextIcon.attr('id', ("uuid-" + newID));
+        removeIcon.attr('id', ("uuid-" + newID));
 
         newNote.append(newColorPicker);
         newNote.append(editTextIcon);
+        newNote.append(removeIcon);
 
         newNote.css({"top" : "100px", "left" : "100px", "position": "absolute"}).appendTo("#draggable");
 
@@ -235,6 +295,7 @@
 
                 error : function(xhr, status, error) {
                     // var err = JSON.parse(xhr.responseText);
+                    console.log('dsdsds');
                     console.log(status);
                     console.log(error);
                 },
@@ -246,16 +307,21 @@
 </script>
 
 <script>
+
     $( function() {
+        console.log();
         $( "#dialog" ).dialog({
             autoOpen: false,
             modal: true,
             title: "Edit your activity",
             show: { effect: "blind", duration: 600 },
+
             buttons: [
                 {
                     text: "OK",
                     click: function() {
+                        var id = $("#tmp").text();
+                        callAJAXContentUpdate(id);
                         $( this ).dialog( "close" );
                     }
                 },
@@ -269,6 +335,7 @@
             ]
         });
     } );
+
 </script>
 
 <script>
@@ -276,11 +343,45 @@
         callAJAXPositionUpdate($(this).position().left, $(this).position().top, $(this).attr('id'));
     })
 
-    $("#draggable").on("click", ".fa", function() {
-        console.log($(this))
-        $( "#dialog" ).dialog( "open" );
+    $("#draggable").on("click", ".fa-pencil", function() {
+
+        $('#tmp').text($(this).attr('id'));
+
+        $("#dialog").dialog("open");
+
+        //$("#tbIntervalos").find("td").attr("id", horaInicial);
+
+        $('.sticky').attr('id', $(this).attr('id')).find("p").text($('#myArea').val());
+
+        //callAJAXContentUpdate($(this).attr('id'));
 
     })
+
+    $("#draggable").on("click", ".fa-times", function() {
+        // console.log($(this).attr('id'));
+
+        // $(document).on('submit', '#sample', function()  {
+        //     buzzer.play();
+        //     return false;
+        // });
+
+        $('#sound')[0].play();
+        var id = $(this).attr('id');
+
+
+        callAJAXDeleteActivity(id);
+
+        console.log("#" + id);
+
+
+
+        // var strId = "#" + id;
+        // $('#draggable').remove($(strId));
+        //
+        // console.log("done");
+
+    })
+
 </script>
 
 

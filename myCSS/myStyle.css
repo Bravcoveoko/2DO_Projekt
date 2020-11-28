@@ -50,12 +50,16 @@
 
 }
 
+.ui-dialog-titlebar-close {
+    display: none;
+}
+
 .sticky {
     position: absolute;
     word-wrap: break-word;
     top: 100px;
     left: 100px;
-    z-index: 150;
+    z-index: 100;
     width: 200px;
     min-height: 200px;
     padding: 10px;
@@ -64,6 +68,10 @@
     color: #000;
     background: white;
     box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+#myArea {
+    resize: none;
 }
 
 .sticky p {
