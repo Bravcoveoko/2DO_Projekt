@@ -61,10 +61,13 @@
 
 <script>
 
-    function foo(id, xPos, yPos, color) {
+    function foo(id, xPos, yPos, color, content) {
         var setNote, setColorPicker;
 
-        setNote = $('<div class="sticky" id="0"><b>Note:</b><p>HHeewehwuehwuehwuehuehuehwuehuwheuwheuwheuweuweuwheuwheuwehu</p></div>').draggable({containment: "#draggable"});
+        setNote = $('<div class="sticky" id="0"><b>Note:</b><p></p></div>').draggable({containment: "#draggable"});
+        var editTextIcon = $('<i class="fa fa-pencil" aria-hidden="true" style="font-size: 20px"></i>');
+
+        var removeIcon = $('<i class="fa fa-times" aria-hidden="true" style="font-size: 20px; left: 130px;"></i>');
         setColorPicker = $('<input type="text" class="my_color_picker" id="0">').colorpicker({ok: function () {
                 //newNote.css('background', rgb())
 
@@ -78,10 +81,15 @@
                 setNote.css('background-color', "#" + $(this).val());
             }});
 
-        setNote.attr('id', ("uuid-" + id));
-        setColorPicker.attr('id', ("uuid-" + id));
+        setNote.attr('id', ("noteID-" + id));
+        setColorPicker.attr('id', ("colorID-" + id));
+        editTextIcon.attr('id', ("editID-" + id));
+        removeIcon.attr('id', ("removeID-" + id));
 
         setNote.append(setColorPicker);
+        setNote.append(editTextIcon);
+        setNote.append(removeIcon);
+        setNote.find('p').text(content);
 
         setNote.css('background-color', color);
 
@@ -89,7 +97,7 @@
     }
 
     function callAJAXDeleteActivity(id) {
-        var parts = id.match(/uuid-(\d+)/);
+        var parts = id.match(/[a-zA-z]*-(\d+)/);
 
         $.ajax({
             url : 'includes/activity_remove.php',
@@ -123,9 +131,10 @@
                 var xPos = data[i]['x_position'];
                 var yPos = data[i]['y_position'];
                 var color = data[i]['color'];
+                var content = data[i]['content'];
                 console.log(id + " " + xPos + " " + yPos + " " + color);
 
-                foo(id, xPos, yPos, color);
+                foo(id, xPos, yPos, color, content);
 
                 console.log("set");
             })();
@@ -156,7 +165,7 @@
 
     function callAJAXPositionUpdate(xPos, yPos, id) {
 
-        var parts = id.match(/uuid-(\d+)/);
+        var parts = id.match(/[a-zA-z]*-(\d+)/);
 
         $.ajax({
             url : 'includes/activity_update_position.php',
@@ -180,10 +189,10 @@
     }
 
     function callAJAXContentUpdate(id) {
-        var parts = id.match(/uuid-(\d+)/);
+        var parts = id.match(/[a-zA-z]*-(\d+)/);
 
         $.ajax({
-            url : 'includes/activity_update_content.php',
+            url : 'includes/acitivity_update_content.php',
             type : 'post',
             dataType: "json",
             data : {
@@ -207,7 +216,7 @@
 
     function callAJAXColorUpdate(that, color) {
         console.log(that);
-        var parts = that.attr('id').match(/uuid-(\d+)/);
+        var parts = that.attr('id').match(/[a-zA-z]*-(\d+)/);
 
 
         $.ajax({
@@ -252,10 +261,10 @@
                 newNote.css('background-color', "#" + $(this).val());
             }});
 
-        newNote.attr('id', ("uuid-" + newID));
-        newColorPicker.attr('id', ("uuid-" + newID));
-        editTextIcon.attr('id', ("uuid-" + newID));
-        removeIcon.attr('id', ("uuid-" + newID));
+        newNote.attr('id', ("noteID-" + newID));
+        newColorPicker.attr('id', ("colorID-" + newID));
+        editTextIcon.attr('id', ("editID-" + newID));
+        removeIcon.attr('id', ("removeID-" + newID));
 
         newNote.append(newColorPicker);
         newNote.append(editTextIcon);
@@ -308,6 +317,19 @@
 
 <script>
 
+    function updateContent(id) {
+        var parts = id.match(/[a-zA-z]*-(\d+)/);
+
+        var noteId = "noteID-" +  parts[1];
+        var newContent = $('#myArea').val();
+
+        console.log("ID: " + noteId);
+        console.log("content: " + newContent);
+        console.log($("#" + noteId).find('p').text());
+        $("#" + noteId).find('p').text(newContent);
+        $('#myArea').val('');
+    }
+
     $( function() {
         console.log();
         $( "#dialog" ).dialog({
@@ -322,6 +344,7 @@
                     click: function() {
                         var id = $("#tmp").text();
                         callAJAXContentUpdate(id);
+                        updateContent(id);
                         $( this ).dialog( "close" );
                     }
                 },
@@ -350,8 +373,6 @@
         $("#dialog").dialog("open");
 
         //$("#tbIntervalos").find("td").attr("id", horaInicial);
-
-        $('.sticky').attr('id', $(this).attr('id')).find("p").text($('#myArea').val());
 
         //callAJAXContentUpdate($(this).attr('id'));
 
