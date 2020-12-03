@@ -16,12 +16,25 @@
     }
 }
 
+.pin {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: #c52436;
+    position: absolute;
+    top: 8px;
+    left: 169px;
+    border: 2px solid;
+}
+
 #draggable {
     position: relative;
     width: 90%;
     height: 700px;
     background-color: white;
     margin: auto;
+    background-image: url(../korok.jpg);
+    border: 20px solid;
 }
 
 

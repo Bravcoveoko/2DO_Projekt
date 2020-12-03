@@ -14,7 +14,7 @@ $(document).ready(function () {
                 userName : 'Text'
             },
             success : function (data) {
-                createActivity(data.id, 100, 100, "#ffffff", "New note");
+                createActivity(data.id, 100, 100, "#bec32f", "New note");
             },
 
             error : function(xhr, status, error) {

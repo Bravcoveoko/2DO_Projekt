@@ -17,7 +17,7 @@ draggable.on("click", ".fa-pencil", function() {
 // Remove activity when we click on remove icon and play sound
 draggable.on("click", ".fa-times", function() {
 
-    $('#sound')[0].play();
+    // $('#sound')[0].play();
 
     let id = $(this).attr('id');
 

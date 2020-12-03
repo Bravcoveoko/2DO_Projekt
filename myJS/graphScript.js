@@ -1,32 +1,32 @@
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
+let canvas = document.getElementById("myCanvas");
+let ctx = canvas.getContext("2d");
 
 
-var pos_x = [];
-var pos_y = [];
-var direction;
-var radius;
-var allVertices = [];
+let pos_x = [];
+let pos_y = [];
+let direction;
+let radius;
+let allVertices = [];
 
-var container = document.getElementById('canvasDiv');
+let container = document.getElementById('canvasDiv');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 // what kind of color and radius will vertices have.
-var color = "#000000"; // white
-var r = 4;
+let color = "#000000"; // white
+let r = 4;
 
 // every x and y coodinates of every pixel in canvas put in array
 // x to pos_X
 // y to pos_y
 function setPosition() {
 
-    for (var i = 0; i < canvas.width; i++) {
+    for (let i = 0; i < canvas.width; i++) {
         pos_x[i] = i;
     }
 
-    for (var i = 0; i < canvas.height; i++) {
+    for (let i = 0; i < canvas.height; i++) {
         pos_y[i] = i;
     }
 
@@ -48,7 +48,7 @@ function createVerticesPos() {
 
     setPosition();
 
-    for (var vertex = 0; vertex < 80; vertex++) {
+    for (let vertex = 0; vertex < 80; vertex++) {
 
         console.log(canvas.width);
         ctx.fillStyle = color;
@@ -73,9 +73,9 @@ function createVertex(x, y) {
     ctx.closePath();
 }
 
-var speed = 5;
+let speed = 5;
 
-var angle = 0;
+let angle = 0;
 
 // Calculate distance of vector from given vertices A and B
 function calculateDistance(vertexA, vertexB) {
@@ -94,18 +94,18 @@ function animate() {
     clearCanvas();
 
     ctx.beginPath();
-    for (var vertex = 0; vertex < 80; vertex++) {
+    for (let vertex = 0; vertex < 80; vertex++) {
 
-        var currentVertex = allVertices[vertex];
-
+        let currentVertex = allVertices[vertex];
+        let newX;
         if (currentVertex[2]) {
-            var newX  = currentVertex[3] * Math.cos(angle * (Math.PI/180));
+            newX = currentVertex[3] * Math.cos(angle * (Math.PI/180));
         }
         else {
-            var newX  = currentVertex[3] * -Math.cos(angle * (Math.PI/180));
+            newX = currentVertex[3] * -Math.cos(angle * (Math.PI/180));
         }
 
-        var newY = currentVertex[3] * Math.sin(angle * (Math.PI/180));
+        let newY = currentVertex[3] * Math.sin(angle * (Math.PI/180));
 
         x = newX + currentVertex[0];
         y = newY + currentVertex[1];
@@ -120,12 +120,12 @@ function animate() {
     ctx.fill();
 
     // Making edges
-    for (var i = 0; i < 80; i++) {
+    for (let i = 0; i < 80; i++) {
 
-        var vertexA = allVertices[i];
+        let vertexA = allVertices[i];
 
-        for (var j = 0; j < 80; j++) {
-            var vertexB = allVertices[j];
+        for (let j = 0; j < 80; j++) {
+            let vertexB = allVertices[j];
 
             //Edge from given A vertex and B vertex.
             // Now we have to choose opacity.

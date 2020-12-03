@@ -35,7 +35,7 @@
                     <a class="nav-link" href="includes/logout.php">Logout</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="activity_board.php"><?php echo $_COOKIE['userName'] . '\'S '?> Activities</a>
+                    <a class="nav-link" href="activity_board.php"><?php echo $_COOKIE['userName'] . '\'s '?> activity board</a>
                 </li>
             <?php endif;?>
         </ul>

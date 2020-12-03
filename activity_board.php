@@ -8,9 +8,9 @@
 <div style="display: none;" id="tmp"></div>
 
 <!-- Crease paper audio-->
-<audio id="sound">
-    <source src="pokrcenie.mp3" type="audio/ogg">
-</audio>
+<!--<audio id="sound">-->
+<!--    <source src="pokrcenie.mp3" type="audio/ogg">-->
+<!--</audio>-->
 
 <!-- Choose date TODO-->
 <div>
@@ -26,7 +26,7 @@
 <a href="#" id="newNote2">Create a new note and get id</a><br>
 
 <!-- Place where are all activities-->
-<div id="draggable"></div>
+<div id="draggable" ></div>
 
 <script>
     $( function() {

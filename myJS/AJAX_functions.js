@@ -91,7 +91,7 @@ function callAJAXContentUpdate(id) {
         dataType: "json",
         data : {
             id : parsedID,
-            content : $('#myArea').val()
+            content : $('#myArea').val().substr(0, 90)
         },
 
         success : function () {

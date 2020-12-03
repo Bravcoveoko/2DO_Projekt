@@ -11,6 +11,7 @@
         <input type="password" class="form-control" name="password2" placeholder="Password" required=""/>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit" name="register_btn">Sign up</button>
+        <h1 style="color:red; font-size: 1em;"> <?php if (isset($_GET['error'])) echo $_GET['error'] ?> </h1>
     </form>
 </div>
 

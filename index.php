@@ -11,9 +11,9 @@
         <h1>Plan your<span id="words"> day</span></h1>
         <button id="main_button">Get started</button>
     </div>
-
-
 </div>
+
+
 <canvas id="myCanvas"></canvas>
 
 

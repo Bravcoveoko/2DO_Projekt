@@ -33,7 +33,7 @@ function updateContent(id) {
 
     let textArea = $('#myArea');
     let noteId = "noteID-" +  parsedID;
-    let newContent = textArea.val();
+    let newContent = textArea.val().substr(0, 90);
 
     $("#" + noteId).find('p').text(newContent);
     textArea.val('');
