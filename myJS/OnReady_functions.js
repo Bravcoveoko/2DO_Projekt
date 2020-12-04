@@ -7,7 +7,11 @@ $(document).ready(function () {
     $('#newNote2').click(function() {
 
         // Avoid to create note for not set day
-        datepicker.datepicker('setDate', dayBeforeNull);
+        // if (datepicker.datepicker('getDate') == null) {
+        //     alert("Choose date first");
+        //     return;
+        // }
+
 
         $.ajax({
             url : 'includes/create_new_activity.php',

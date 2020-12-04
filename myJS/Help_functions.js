@@ -53,4 +53,9 @@ function checkDate() {
     if ( datepicker.datepicker('getDate') == null) {
         datepicker.datepicker('setDate', new Date());
     }
+
+    if (!leftTrigger && !rightTrigger) {
+        callAJAXSetAllActivities();
+    }
+
 }

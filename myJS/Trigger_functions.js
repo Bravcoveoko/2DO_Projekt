@@ -1,6 +1,8 @@
 let draggable = $("#draggable");
 
 let dateDiv = $('#date');
+let rightTrigger = false;
+let leftTrigger = false;
 
 let dayBeforeNull = datepicker.datepicker('getDate');
 
@@ -37,11 +39,14 @@ draggable.on("click", ".fa-times", function() {
 dateDiv.on('click', '#arrowLeft', function () {
 
     let currentDate = datepicker.datepicker('getDate');
+    dayBeforeNull = currentDate;
+
+    leftTrigger = true;
 
     checkDate();
 
     currentDate.setDate( currentDate.getDate() - 1 );
-    dayBeforeNull = currentDate;
+
 
 
     datepicker.datepicker('setDate', currentDate);
@@ -51,12 +56,16 @@ dateDiv.on('click', '#arrowLeft', function () {
 
 // Subtract on day
 dateDiv.on('click', '#arrowRight', function () {
+
     let currentDate = datepicker.datepicker('getDate');
+    dayBeforeNull = currentDate;
+
+    rightTrigger = true;
 
     checkDate();
 
     currentDate.setDate( currentDate.getDate() + 1 );
-    dayBeforeNull = currentDate;
+
 
     datepicker.datepicker('setDate', currentDate);
 
