@@ -5,6 +5,10 @@ function getIdFromString(str) {
     return parts[1];
 }
 
+function setDatePicker() {
+
+}
+
 // When user log in all activities have to be set on.
 // data => All user's from DB
 function setActivities(data) {
@@ -37,4 +41,16 @@ function updateContent(id) {
 
     $("#" + noteId).find('p').text(newContent);
     textArea.val('');
+}
+
+// Remove all notes. Used to recreate activity board when user chooses new date
+function deleteALlNotes() {
+    $('.sticky').remove();
+}
+
+// If picked date is null has to be set to today date
+function checkDate() {
+    if ( datepicker.datepicker('getDate') == null) {
+        datepicker.datepicker('setDate', new Date());
+    }
 }

@@ -29,10 +29,16 @@ function callAJAXDeleteActivity(id) {
 
 // AJAX to get all user's activities
 function callAJAXSetAllActivities() {
+
+    deleteALlNotes();
+
     $.ajax({
         url : 'includes/activity_setup.php',
         type : 'post',
         dataType: "json",
+        data : {
+            date : datepicker.val()
+        },
 
         success : function (data) {
             console.log(data);

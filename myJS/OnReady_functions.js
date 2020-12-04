@@ -6,12 +6,15 @@ $(document).ready(function () {
     // By pressing this button new note is going to be created
     $('#newNote2').click(function() {
 
+        // Avoid to create note for not set day
+        datepicker.datepicker('setDate', dayBeforeNull);
+
         $.ajax({
             url : 'includes/create_new_activity.php',
             type : 'post',
             dataType: "json",
             data : {
-                userName : 'Text'
+                date : datepicker.val()
             },
             success : function (data) {
                 createActivity(data.id, 100, 100, "#bec32f", "New note");

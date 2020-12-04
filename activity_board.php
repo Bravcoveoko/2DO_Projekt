@@ -13,8 +13,12 @@
 <!--</audio>-->
 
 <!-- Choose date TODO-->
-<div>
-    <p><input type="text" id="datepicker"></p>
+<div id="date">
+    <p>
+        <i class="fa fa-arrow-left" id="arrowLeft" aria-hidden="true" style="color: #723CB4;"></i>
+        <input type="text" id="datepicker" placeholder="Pick your date.." onchange="checkDate();">
+        <i class="fa fa-arrow-right" id="arrowRight" aria-hidden="true" style="color: #723CB4;"></i>
+    </p>
 </div>
 
 <!-- Popup box-->
@@ -28,24 +32,34 @@
 <!-- Place where are all activities-->
 <div id="draggable" ></div>
 
+<!-- Prepare datepicker -->
 <script>
+
     $( function() {
         $( "#datepicker" ).datepicker({
             showWeek: true,
-            firstDay: 1
-        });
+            firstDay: 1,
+            currentText: "Now",
+            dateFormat: 'dd.mm.yy',
+            showAnim: "show",
+            defaultDate: new Date()
+        }).datepicker("setDate", new Date());
     } );
+
+    let datepicker = $('#datepicker');
 </script>
 
-<!-- Helpers -->
-<script src="myJS/Help_functions.js"></script>
 <!-- All AJAX functions -->
 <script src="myJS/AJAX_functions.js"></script>
+<!-- On ready -->
+<script src="myJS/OnReady_functions.js"></script>
 <!-- Triggering functions -->
 <script src="myJS/Trigger_functions.js"></script>
 <!-- Dialog functions-->
 <script src="myJS/Dialog_Note_functions.js"></script>
-<!-- On ready -->
-<script src="myJS/OnReady_functions.js"></script>
+<!-- Helpers -->
+<script src="myJS/Help_functions.js"></script>
+
+
 
 </body>

@@ -62,6 +62,8 @@ $( function() {
 
                     let id = $("#tmp").text();
 
+                    console.log("OK: " + id);
+
                     callAJAXContentUpdate(id);
                     updateContent(id);
 

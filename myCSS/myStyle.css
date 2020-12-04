@@ -16,6 +16,24 @@
     }
 }
 
+#date {
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+#datepicker {
+    height: 40px;
+    width: 240px;
+    font-size: 19px;
+    color: black;
+    padding-left: 66px;
+}
+
+
+
 .pin {
     height: 20px;
     width: 20px;
@@ -60,7 +78,19 @@
     position: absolute;
     left: 100px;
     top: 162.8px;
+}
 
+#arrowLeft {
+    position: unset;
+    font-size: 24px;
+    cursor: pointer;
+
+}
+
+#arrowRight {
+    position: unset;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 .ui-dialog-titlebar-close {
