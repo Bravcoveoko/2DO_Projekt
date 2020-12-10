@@ -15,9 +15,12 @@
 <!-- Choose date TODO-->
 <div id="date">
     <p>
+<!--        -->
+        <a href="#" id="newNote">Create new note</a>
         <i class="fa fa-arrow-left" id="arrowLeft" aria-hidden="true" style="color: #723CB4;"></i>
         <input type="text" id="datepicker" placeholder="Pick your date.." onchange="checkDate();">
         <i class="fa fa-arrow-right" id="arrowRight" aria-hidden="true" style="color: #723CB4;"></i>
+        <a href="#" id="trash"> Trash </a>
     </p>
 </div>
 
@@ -26,11 +29,15 @@
     <textarea id="myArea" style="width: 260px; height: 100px;"></textarea>
 </div>
 
-<!-- Button to create new activity TODO-->
-<a href="#" id="newNote2">Create a new note and get id</a><br>
-
 <!-- Place where are all activities-->
 <div id="draggable" ></div>
+
+
+<script>
+    $('#trash').click(function () {
+        window.location.href = "trash.php?date=" + datepicker.val();
+    })
+</script>
 
 <!-- Prepare datepicker -->
 <script>
@@ -59,7 +66,5 @@
 <script src="myJS/Dialog_Note_functions.js"></script>
 <!-- Helpers -->
 <script src="myJS/Help_functions.js"></script>
-
-
 
 </body>
