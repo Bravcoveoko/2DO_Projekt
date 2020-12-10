@@ -68,6 +68,22 @@
     z-index: 100000;
 }
 
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 100%;
+    background-color:black;
+    height: 1px;
+}
+
+
+
+.list-group {
+    margin: 20px auto 0;
+    width: 50%;
+}
+
 .my_color_picker {
     width: 70px;
     position: absolute;
@@ -85,6 +101,24 @@
     font-size: 24px;
     cursor: pointer;
 
+}
+
+#newNote {
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: absolute;
+    font-size: 24px;
+    cursor: pointer;
+    left: 200px;
+    color: white;
+    background-color: #723CB4;;
+    text-decoration: none;
+    transition: background-color 1s;
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", "Comic Neue", cursive;
+}
+
+#newNote:hover {
+    background-color: #522F8E;
 }
 
 #arrowRight {
@@ -111,6 +145,32 @@
     color: #000;
     background: white;
     box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.trashButtons {
+    display: inline-block;
+}
+
+#trash {
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: absolute;
+    font-size: 24px;
+    cursor: pointer;
+    left: 510px;
+    color: white;
+    background-color: #723CB4;
+    text-decoration: none;
+    transition: background-color 1s;
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", "Comic Neue", cursive;
+}
+
+#trash:hover {
+    background-color: #522F8E;
+}
+
+.reset {
+    margin-right: 10px;
 }
 
 #myArea {

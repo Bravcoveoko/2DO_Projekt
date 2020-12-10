@@ -38,6 +38,9 @@
                     <a class="nav-link" href="activity_board.php"><?php echo $_COOKIE['userName'] . '\'s '?> activity board</a>
                 </li>
             <?php endif;?>
+
+
+
         </ul>
     </div>
 </nav>

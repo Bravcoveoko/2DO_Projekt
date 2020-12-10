@@ -11,7 +11,7 @@ if (empty($conn)) {
 }
 
 //$sqlRemove = "DELETE FROM activities WHERE id='$id'";
-$sqlRemove = "UPDATE activities SET is_trashed = 1 WHERE id = " . mysqli_real_escape_string($conn, $id);
+$sqlRemove = "DELETE FROM activities WHERE id=" . mysqli_real_escape_string($conn, $id);
 
 $res = mysqli_query($conn, $sqlRemove);
 

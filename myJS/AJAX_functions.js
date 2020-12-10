@@ -25,6 +25,8 @@ function callAJAXDeleteActivity(id) {
     $(noteID).remove();
 }
 
+
+
 // *************************************************
 
 // AJAX to get all user's activities
@@ -45,9 +47,12 @@ function callAJAXSetAllActivities() {
             setActivities(data);
         },
 
-        error : function () {
-            // console.log("neni updatnuty");
-        }
+        error : function(xhr, status, error) {
+            // var err = JSON.parse(xhr.responseText);
+            console.log('dsdsds');
+            console.log(status);
+            console.log(error);
+        },
 
     });
 

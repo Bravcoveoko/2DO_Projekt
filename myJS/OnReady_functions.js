@@ -4,14 +4,7 @@ $(document).ready(function () {
     callAJAXSetAllActivities();
 
     // By pressing this button new note is going to be created
-    $('#newNote2').click(function() {
-
-        // Avoid to create note for not set day
-        // if (datepicker.datepicker('getDate') == null) {
-        //     alert("Choose date first");
-        //     return;
-        // }
-
+    $('#newNote').click(function() {
 
         $.ajax({
             url : 'includes/create_new_activity.php',

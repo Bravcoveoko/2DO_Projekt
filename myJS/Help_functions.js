@@ -5,16 +5,13 @@ function getIdFromString(str) {
     return parts[1];
 }
 
-function setDatePicker() {
-
-}
-
 // When user log in all activities have to be set on.
 // data => All user's from DB
 function setActivities(data) {
     let len = data.length;
 
 
+    console.log("som tu");
     for(let i = 0; i < len; i++) {
 
         (function () {
@@ -24,6 +21,7 @@ function setActivities(data) {
             let color = data[i]['color'];
             let content = data[i]['content'];
 
+            console.log("Aktivita sa ide vyrobit");
             createActivity(id, xPos, yPos, color, content);
 
         })();

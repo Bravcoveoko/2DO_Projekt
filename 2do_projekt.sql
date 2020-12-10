@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 23, 2020 at 04:10 PM
+-- Generation Time: Dec 10, 2020 at 04:26 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -35,15 +35,18 @@ CREATE TABLE `activities` (
   `color` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `content` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` date NOT NULL,
-  `is_important` tinyint(1) NOT NULL
+  `is_trashed` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `activities`
 --
 
-INSERT INTO `activities` (`id`, `user_id`, `x_position`, `y_position`, `color`, `content`, `created_at`, `is_important`) VALUES
-(1, 4, 100, 100, 'ffffff', 'New note', '2020-11-23', 0);
+INSERT INTO `activities` (`id`, `user_id`, `x_position`, `y_position`, `color`, `content`, `created_at`, `is_trashed`) VALUES
+(45, 7, 635, 267, '#13dabb', 'New note', '2020-12-10', 0),
+(46, 7, 56, 211, '#86a68c', 'fdfdfdfdf', '2020-12-10', 0),
+(47, 7, 339, 84, '#222cd6', 'gfghghghghghgh', '2020-12-10', 0),
+(48, 7, 890.0000305175781, 76, '#bec32f', 'mmmmmmm', '2020-12-10', 0);
 
 -- --------------------------------------------------------
 
@@ -64,10 +67,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `userName`, `email`, `password`, `created_at`) VALUES
-(1, 'test1', 'test1@gmail.com ', 'test', '2020-11-18'),
-(2, 'test2', 'test2@gmail.com ', 'test', '2020-11-18'),
-(3, 'llll', 'asasa@sasasas.com ', 'llll', '2020-11-18'),
-(4, 'lukas1', 'lukas@gmail.com ', 'lukas', '2020-11-18');
+(7, 'Lukas21', 'hhh@gmail.com ', '$argon2i$v=19$m=1024,t=2,p=2$RFh3UG4vSGdwZkNrNkRQdQ$0M4rfNs/dIUD7iQ8vMtYeaDQlm7XaUvyogg4re/Npck', '2020-12-05');
 
 --
 -- Indexes for dumped tables
@@ -94,13 +94,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

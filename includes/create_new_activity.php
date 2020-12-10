@@ -2,7 +2,6 @@
 
 include 'config.php';
 
-//echo json_encode(['id' => 'nieco']);
 $user_id = $_COOKIE['userID'];
 
 $getDate = $_POST['date'];
@@ -15,7 +14,7 @@ preg_match_all($re, $getDate, $info);
 $newDate = "" . $info[3][0] . $info[2][0] . $info[1][0];
 
 
-$sqlInsert = "INSERT INTO activities ( user_id, x_position, y_position, color, content, created_at, is_important)
+$sqlInsert = "INSERT INTO activities ( user_id, x_position, y_position, color, content, created_at, is_trashed)
                 VALUES ('$user_id', 100, 100, '#bec32f', 'New note', '$newDate', 0)";
 
 if (empty($conn)) {
