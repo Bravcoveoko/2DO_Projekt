@@ -17,7 +17,7 @@ $_GET['trashDate'] = $newDate;
 
 
 if (empty($conn)) {
-    echo 'nieco';
+    header("Location: ../index.php");
     return;
 }
 

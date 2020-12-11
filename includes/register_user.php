@@ -118,7 +118,7 @@ if (isset($_POST['register_btn'])) {
         setcookie('userName', null, -1, '/');
         setcookie('userName', $username,  time() + 3600, '/');
         setcookie('userID', $person['id'], time() + 3600, '/');
-        header("Location: ../index.php");
+        header("Location: ../activity_board.php");
     }else {
         header("Location: ../registration.php?error=No+user+was+inserted");
         exit();

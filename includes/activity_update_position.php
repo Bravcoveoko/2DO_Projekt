@@ -9,7 +9,7 @@ $yPos = $_POST['yPos'];
 $sqlActivityUpdate = "UPDATE activities SET x_position = '$xPos', y_position = '$yPos' WHERE id = '$id'";
 
 if (empty($conn)) {
-    echo 'nieco';
+    header("Location: ../index.php");
     return;
 }
 

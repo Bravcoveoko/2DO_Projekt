@@ -14,4 +14,3 @@
         <h1 style="color:red; font-size: 1em;"> <?php if (isset($_GET['error'])) echo $_GET['error'] ?> </h1>
     </form>
 </div>
-

@@ -6,7 +6,7 @@ setcookie('userName', null, -1, '/');
 
 
 if (empty($conn)) {
-    echo 'nieco';
+    header("Location: ../index.php");
     return;
 }
 

@@ -5,7 +5,7 @@ include 'config.php';
 $id = $_POST['id'];
 
 if ( empty($conn) ) {
-    echo 'nieco';
+    header("Location: ../index.php");
     return;
 }
 

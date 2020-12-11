@@ -8,7 +8,7 @@ $content = $_POST['content'];
 $sqlActivityUpdate = "UPDATE activities SET content = '$content' WHERE id = '$id'";
 
 if (empty($conn)) {
-    echo 'nieco';
+    header("Location: ../index.php");
     return;
 }
 

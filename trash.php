@@ -27,11 +27,8 @@
                 </div>
 
                 <b><p class="mb-1"> <?php echo $activity['content'] ?> </p></b>
-                <div>
-                    <p>HEllo</p>
-                </div>
                 <p class="trashButtons reset" style="cursor: pointer">Reset</p>
-                <p class="trashButtons remove" style="color:red; cursor: pointer">Remove</p>
+                <p class="trashButtons remove" style="cursor: pointer">Remove</p>
                 <p> </p>
             </a>
         <?php endforeach; ?>
@@ -99,7 +96,7 @@
     $('.remove').click(function () {
         let parsedID = getIdFromString($(this).parent().attr('id'));
 
-        callAJAXRemoveActivity(id);
+        callAJAXRemoveActivity(parsedID);
         $(this).parent().remove();
 
     })

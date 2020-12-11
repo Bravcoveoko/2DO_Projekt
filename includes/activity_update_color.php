@@ -8,7 +8,7 @@ $color = $_POST['color'];
 $sqlActivityUpdate = "UPDATE activities SET color = '$color' WHERE id = '$id'";
 
 if ( empty($conn) ) {
-    echo 'nieco';
+    header("Location: ../index.php");
     return;
 }
 

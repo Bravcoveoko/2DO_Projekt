@@ -57,7 +57,7 @@ if (isset($_POST['login_btn'])) {
         setcookie('userName', $person['userName'],  time() + 3600, '/');
         setcookie('userID', $person['id'], time() + 3600, '/');
 
-        header("Location: ../index.php");
+        header("Location: ../activity_board.php");
     }else {
         header("Location: ../login.php?error=Login+failed");
         exit();

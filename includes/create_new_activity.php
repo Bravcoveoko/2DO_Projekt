@@ -18,7 +18,7 @@ $sqlInsert = "INSERT INTO activities ( user_id, x_position, y_position, color, c
                 VALUES ('$user_id', 100, 100, '#bec32f', 'New note', '$newDate', 0)";
 
 if (empty($conn)) {
-    echo 'nieco';
+    header("Location: ../index.php");
     return;
 }
 
@@ -30,8 +30,6 @@ $res = mysqli_query($conn, $sqlInsert);
 $actResult = mysqli_query($conn, $sqlGetLatestAct);
 
 $activity = mysqli_fetch_assoc($actResult);
-
-//echo $activity['id'];
 
 echo json_encode(['id' => $activity['id']]);
 

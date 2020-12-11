@@ -157,7 +157,7 @@ hr {
     position: absolute;
     font-size: 24px;
     cursor: pointer;
-    left: 510px;
+    left: 1540px;
     color: white;
     background-color: #723CB4;
     text-decoration: none;
@@ -169,8 +169,31 @@ hr {
     background-color: #522F8E;
 }
 
+.trashButtons {
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+}
+
 .reset {
     margin-right: 10px;
+    background-color: #723CB4;
+    transition: background-color 1s;
+
+}
+
+.reset:hover {
+    background-color: #522F8E;
+}
+
+.remove {
+    background-color: #8B0000;
+    transition: background-color 1s;
+}
+
+.remove:hover {
+    background-color: red;
 }
 
 #myArea {

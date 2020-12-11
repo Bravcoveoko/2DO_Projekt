@@ -1,9 +1,7 @@
 <?php
 
-//include 'config.php';
-
 if (empty($conn)) {
-    echo 'nieco';
+    header("Location: ../index.php");
     return;
 }
 
@@ -15,9 +13,3 @@ $sql = "SELECT * FROM activities WHERE user_id=" . $_COOKIE['userID'] . " AND is
 $result = mysqli_query($conn, $sql);
 
 $activitiesInTrash = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-//print_r($activitiesInTrash);
-
-
-
-//echo 'Pocet: ' . count($activitiesInTrash);

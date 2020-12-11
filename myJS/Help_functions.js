@@ -11,7 +11,6 @@ function setActivities(data) {
     let len = data.length;
 
 
-    console.log("som tu");
     for(let i = 0; i < len; i++) {
 
         (function () {

@@ -12,7 +12,8 @@ function createActivity(id, xPos, yPos, color, content) {
     let pin = $('<div class="pin"></div>');
 
     // Create colorpicker with options
-    let colorPicker = $('<input type="text" class="my_color_picker" data-toggle="tooltip" title="Change color">').colorpicker({ok: function () {
+    let colorPicker = $('<input type="text" class="my_color_picker" data-toggle="tooltip" title="Change color">').colorpicker({
+        ok: function () {
 
             // TODO: remove replace console log with something different
             if (jQuery.isEmptyObject($(this).val())) {
