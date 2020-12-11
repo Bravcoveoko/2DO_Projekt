@@ -3,8 +3,8 @@ let draggable = $("#draggable");
 let dateDiv = $('#date');
 let rightTrigger = false;
 let leftTrigger = false;
-
 let dayBeforeNull = datepicker.datepicker('getDate');
+
 
 // Update activity position we are moving with
 draggable.on("mouseup", ".sticky", function() {
@@ -20,6 +20,23 @@ draggable.on("click", ".fa-pencil", function() {
     $('#tmp').text($(this).attr('id'));
 
     $("#dialog").dialog("open");
+
+})
+
+// ************** CHECK *********************
+draggable.on("click", ".fa-exclamation", function () {
+    console.log($(this).attr('id'));
+
+    if ( $(this).css('color') === "rgb(255, 0, 0)" ) {
+
+        $(this).css({"color": "black"});
+        callAJAXImportanceUpdate($(this).attr('id'), false);
+
+    }else {
+
+        $(this).css({"color": "red"});
+        callAJAXImportanceUpdate($(this).attr('id'), true);
+    }
 
 })
 
@@ -71,3 +88,5 @@ dateDiv.on('click', '#arrowRight', function () {
 
     callAJAXSetAllActivities();
 })
+
+

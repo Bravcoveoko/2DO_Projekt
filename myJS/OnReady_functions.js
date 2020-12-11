@@ -14,7 +14,7 @@ $(document).ready(function () {
                 date : datepicker.val()
             },
             success : function (data) {
-                createActivity(data.id, 100, 100, "#bec32f", "New note");
+                createActivity(data.id, 100, 100, "#bec32f", "New note",  0);
             },
 
             error : function(xhr, status, error) {

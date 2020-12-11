@@ -58,6 +58,35 @@ function callAJAXSetAllActivities() {
 
 }
 
+// Update is_important attribute
+function callAJAXImportanceUpdate(id, value) {
+
+    let parsedID = getIdFromString(id);
+
+    $.ajax({
+        url : 'includes/activity_update_importance.php',
+        type : 'post',
+        dataType: "json",
+        data : {
+            id : parsedID,
+            value: value
+        },
+
+        success : function (data) {
+            console.log(data);
+            console.log("imporant " + parsedID);
+        },
+
+        error : function(xhr, status, error) {
+            // var err = JSON.parse(xhr.responseText);
+            console.log('dsdsds');
+            console.log(status);
+            console.log(error);
+        },
+
+    });
+}
+
 // *******************************************
 
 // AJAX to update position of activity we are moving with

@@ -14,8 +14,8 @@ preg_match_all($re, $getDate, $info);
 $newDate = "" . $info[3][0] . $info[2][0] . $info[1][0];
 
 
-$sqlInsert = "INSERT INTO activities ( user_id, x_position, y_position, color, content, created_at, is_trashed)
-                VALUES ('$user_id', 100, 100, '#bec32f', 'New note', '$newDate', 0)";
+$sqlInsert = "INSERT INTO activities ( user_id, x_position, y_position, color, content, created_at, is_trashed, is_important)
+                VALUES ('$user_id', 100, 100, '#bec32f', 'New note', '$newDate', 0, 0)";
 
 if (empty($conn)) {
     header("Location: ../index.php");

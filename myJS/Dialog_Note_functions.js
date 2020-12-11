@@ -4,7 +4,9 @@
 // yPos => Default is 100px
 // color => Default is #ffffff
 // content => Default is empty string
-function createActivity(id, xPos, yPos, color, content) {
+function createActivity(id, xPos, yPos, color, content, importance) {
+
+    console.log('importance: ' + importance);
 
     // Main activity
     let note = $('<div class="sticky"><b>Note:</b><p></p></div>').draggable({containment: "#draggable"});
@@ -27,8 +29,11 @@ function createActivity(id, xPos, yPos, color, content) {
         }});
 
     // Create icons (edit & remove)
-    let editTextIcon = $('<i class="fa fa-pencil" aria-hidden="true" style="font-size: 20px" data-toggle="tooltip" title="Edit note"></i>');
-    let removeIcon = $('<i class="fa fa-times" aria-hidden="true" style="font-size: 20px; left: 130px;" data-toggle="tooltip" title="Remove note"></i>');
+    let editTextIcon = $('<i class="fa fa-pencil" aria-hidden="true" style="font-size: 20px; cursor: pointer" data-toggle="tooltip" title="Edit note"></i>');
+    let removeIcon = $('<i class="fa fa-times" aria-hidden="true" style="font-size: 20px; left: 130px; cursor: pointer" data-toggle="tooltip" title="Remove note"></i>');
+
+    // Check added
+    let check = $('<i class="fa fa-exclamation" aria-hidden="true" style="font-size: 20px; left: 160px; cursor: pointer" data-toggle="tooltip" title="Set to important"></i>');
 
     // Set to all their specific ID
     note.attr('id', ("noteID-" + id));
@@ -36,13 +41,22 @@ function createActivity(id, xPos, yPos, color, content) {
     editTextIcon.attr('id', ("editID-" + id));
     removeIcon.attr('id', ("removeID-" + id));
 
+    // check added
+    check.attr('id', ("checkID-" + id));
+
     // Append all elements to activity
     note.append(pin);
     note.append(colorPicker);
     note.append(editTextIcon);
     note.append(removeIcon);
+    note.append(check);
 
     // Some CSS settings
+    if (importance === '1') {
+        check.css({'color' : 'red'});
+    }else {
+        check.css({'color' : 'black'});
+    }
     note.find('p').text(content);
     note.css('background-color', color);
     note.css({"top" : (yPos + "px"), "left" : (xPos + "px"), "position": "absolute"}).appendTo("#draggable");

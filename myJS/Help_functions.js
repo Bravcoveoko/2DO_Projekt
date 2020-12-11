@@ -19,9 +19,9 @@ function setActivities(data) {
             let yPos = data[i]['y_position'];
             let color = data[i]['color'];
             let content = data[i]['content'];
+            let importance = data[i]['is_important'];
 
-            console.log("Aktivita sa ide vyrobit");
-            createActivity(id, xPos, yPos, color, content);
+            createActivity(id, xPos, yPos, color, content, importance);
 
         })();
     }
