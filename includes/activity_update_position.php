@@ -2,6 +2,11 @@
 
 include 'config.php';
 
+/**
+ * Update x and y coordinates of activity with given id
+ */
+
+
 $id = $_POST['id'];
 $xPos = $_POST['xPos'];
 $yPos = $_POST['yPos'];

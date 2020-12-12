@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Get all activities which have trashed status
+ */
+
 if (empty($conn)) {
     header("Location: ../index.php");
     return;

@@ -2,6 +2,11 @@
 
 include 'config.php';
 
+/**
+ * Update importance of activity with given id
+ */
+
+
 $id = $_POST['id'];
 $value = ($_POST['value'] == 'true') ? 1 : 0;
 

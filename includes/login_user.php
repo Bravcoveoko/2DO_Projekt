@@ -2,6 +2,10 @@
 
 require 'config.php';
 
+/**
+ * Log in user and set cookies
+ */
+
 $username = '';
 $password = '';
 

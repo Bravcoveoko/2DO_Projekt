@@ -3,14 +3,17 @@
 require 'config.php';
 require 'checkers.php';
 
+
+/**
+ * Register user. Username and password have to pass all check function. After success cookies are set
+ */
+
 if (isset($_POST['register_btn'])) {
 
     $email = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password1'];
     $password2 = $_POST['password2'];
-
-    //hhh@gmail.com
 
     // If username is more than 5 characters
     if ( !checkLengthLess($username) ) {

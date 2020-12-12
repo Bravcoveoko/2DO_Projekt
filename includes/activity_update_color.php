@@ -2,6 +2,10 @@
 
 include 'config.php';
 
+/**
+ * Update color of activity with given id
+ */
+
 $id = $_POST['id'];
 $color = $_POST['color'];
 

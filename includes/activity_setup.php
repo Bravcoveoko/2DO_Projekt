@@ -2,19 +2,21 @@
 
 include 'config.php';
 
+/**
+ * Get all activities from DB for given date a user
+ */
+
+if (empty($_COOKIE['userID'])) {
+    //header("Location: ../index.php");
+    echo json_encode(['error' => true]);
+}
+
+
 $id = $_COOKIE['userID'];
 
 $getDate = $_POST['date'];
 
-// Regex to get date, month and year
-$re = "/([0-9]{2}).([0-9]{2}).([0-9]{4})/";
-
-preg_match_all($re, $getDate, $info);
-
-$newDate = "" . $info[3][0] . "-". $info[2][0] . "-" . $info[1][0];
-
-$_GET['trashDate'] = $newDate;
-
+$newDate = date("Y-m-d", strtotime($getDate));
 
 if (empty($conn)) {
     header("Location: ../index.php");
@@ -25,6 +27,8 @@ $sqlGetAllAct = "SELECT * FROM activities WHERE user_id='" . mysqli_real_escape_
                     AND created_at='" . mysqli_real_escape_string($conn, $newDate) ."'AND is_trashed=0";
 
 $res = mysqli_query($conn, $sqlGetAllAct);
+
+// Fetch them together and send back
 
 $rows = array();
 while($row = $res->fetch_assoc()) {

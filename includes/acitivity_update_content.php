@@ -2,6 +2,11 @@
 
 include 'config.php';
 
+/**
+ * Update content of activity with given id.
+ */
+
+
 $id = $_POST['id'];
 $content = $_POST['content'];
 

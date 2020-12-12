@@ -2,6 +2,10 @@
 
 include 'config.php';
 
+/**
+ * Log out user and set cookies to null
+ */
+
 setcookie('userName', null, -1, '/');
 
 

@@ -2,6 +2,10 @@
 
 include 'config.php';
 
+/**
+ * Activity with given id is no more in status trashed.
+ */
+
 $id = $_POST['id'];
 
 if ( empty($conn) ) {

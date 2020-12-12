@@ -15,7 +15,6 @@
 <!-- Choose date TODO-->
 <div id="date">
     <p>
-<!--        -->
         <a href="#" id="newNote">Create new note</a>
         <i class="fa fa-arrow-left" id="arrowLeft" aria-hidden="true" style="color: #723CB4;"></i>
         <input type="text" id="datepicker" placeholder="Pick your date.." onchange="checkDate();">

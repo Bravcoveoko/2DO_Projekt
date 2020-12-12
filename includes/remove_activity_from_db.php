@@ -2,6 +2,10 @@
 
 include 'config.php';
 
+/**
+ * Remove activity from DB with given id
+ */
+
 $id = $_POST['id'];
 
 

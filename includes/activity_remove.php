@@ -2,8 +2,13 @@
 
 include 'config.php';
 
-$id = $_POST['id'];
 
+/**
+ * Set activity with given id to trashed state
+ */
+
+
+$id = $_POST['id'];
 
 if (empty($conn)) {
     header("Location: ../index.php");

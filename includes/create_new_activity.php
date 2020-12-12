@@ -2,17 +2,15 @@
 
 include 'config.php';
 
+/**
+ * Create new activity to DB and return ID
+ */
+
 $user_id = $_COOKIE['userID'];
 
 $getDate = $_POST['date'];
 
-// Regex to get date, month and year
-$re = "/([0-9]{2}).([0-9]{2}).([0-9]{4})/";
-
-preg_match_all($re, $getDate, $info);
-
-$newDate = "" . $info[3][0] . $info[2][0] . $info[1][0];
-
+$newDate = date("Y-m-d", strtotime($getDate));
 
 $sqlInsert = "INSERT INTO activities ( user_id, x_position, y_position, color, content, created_at, is_trashed, is_important)
                 VALUES ('$user_id', 100, 100, '#bec32f', 'New note', '$newDate', 0, 0)";

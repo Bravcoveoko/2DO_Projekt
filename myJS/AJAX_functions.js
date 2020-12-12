@@ -49,9 +49,11 @@ function callAJAXSetAllActivities() {
 
         error : function(xhr, status, error) {
             // var err = JSON.parse(xhr.responseText);
+            window.href = ''
             console.log('dsdsds');
             console.log(status);
             console.log(error);
+            window.location.href = "index.php"
         },
 
     });
