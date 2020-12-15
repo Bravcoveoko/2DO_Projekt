@@ -112,6 +112,18 @@
     <br>
 
     <img src="images/Picture8.png" class="mx-auto d-block" alt="..." style="margin-bottom: 10px">
+
+    <a id="scrollUp">Scroll up</a>
+
 </div>
 
+
+
 <?php include 'includes/footer.php'?>
+
+<!--Smooth scrolling up-->
+<script>
+    $('#scrollUp').click(function () {
+        $("html, body").animate({ scrollTop: 0 }, 1000);
+    });
+</script>

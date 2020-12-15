@@ -150,6 +150,23 @@ hr {
 .trashButtons {
     display: inline-block;
 }
+#scrollUp {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    background-color: #723CB4;
+    text-decoration: none;
+    transition: background-color 1s;
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", "Comic Neue", cursive;
+}
+
+#scrollUp:hover {
+    background-color: #522F8E;
+}
+
+
 
 #trash {
     padding: 5px 10px;
@@ -222,6 +239,7 @@ html {
     background-color: #723CB4;
     text-align: center;
     padding: 20px 0px;
+    margin-top: 10px;
 }
 
 #main_button {
