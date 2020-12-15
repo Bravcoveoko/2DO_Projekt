@@ -3,7 +3,7 @@
     <a href="index.php">
         <img src="images/Logo.png" width="70" height="70" class="d-inline-block align-top" alt="">
     </a>
-    <a class="navbar-brand" href="#">2DoIst</a>
+    <a class="navbar-brand" href="#">2DO app  |</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,10 +13,7 @@
                 <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">About us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" href="tutorial.php">Tutorial</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">

@@ -260,7 +260,7 @@ body {
     background: #723CB4;
 }
 
-.nav-link, .navbar-brand:not(:first-child) {
+.nav-link {
     color: white;
     font-weight: bold;
     font-size: 20px;
@@ -268,7 +268,19 @@ body {
     transition-duration: 0.4s;
 }
 
-.nav-link:hover, .navbar-brand:hover {
+.navbar-brand {
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+.navbar-brand:hover {
+    color: white;
+}
+
+.nav-link:hover {
     animation: wiggle 1s ease;
     animation-iteration-count: 1;
     color: white;
@@ -297,6 +309,21 @@ body {
 }
 
 #words {
+    color: #723CB4;
+}
+
+.tutorial_text {
+    margin: 0 auto;
+    width: 50%;
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", "Comic Neue", cursive;
+    font-size: 24px;
+}
+
+.tutorial_text span {
+    font-weight: bold;
+}
+
+.text-center h1 {
     color: #723CB4;
 }
 
