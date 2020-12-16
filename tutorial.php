@@ -35,7 +35,7 @@
     <br>
     <hr style="width: 50%">
 
-    <p class="tutorial_text">After clicking on the „<span>Create new button</span>“ a new note will appear on the board where you can write down your activities, tasks or whatever you need. You can write a note using the „<span>edit note button</span>“.</p>
+    <p class="tutorial_text">After clicking on the „<span>Create new note</span>“ a new note will appear on the board where you can write down your activities, tasks or whatever you need. You can write a note using the „<span>edit note button</span>“.</p>
 
     <br>
 
