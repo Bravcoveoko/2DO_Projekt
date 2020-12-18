@@ -10,7 +10,7 @@
     <div class="info-content">
         <h1>Plan your<span id="words"> day</span></h1>
         <form action="tutorial.php">
-            <button id="main_button" >Get started</button>
+            <button id="main_button" >Get started  </button>
         </form>
     </div>
 </div>
