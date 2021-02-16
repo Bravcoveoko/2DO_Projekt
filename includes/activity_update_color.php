@@ -18,4 +18,4 @@ if ( empty($conn) ) {
 
 $res = mysqli_query($conn, $sqlActivityUpdate);
 
-echo $id . " : " . $color;
+echo json_encode(['id' => 'daco']);

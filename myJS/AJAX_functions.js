@@ -158,21 +158,27 @@ function callAJAXColorUpdate(that, color) {
 
     let parsedID = getIdFromString(that.attr('id'));
 
+    console.log(parsedID);
+    console.log(color);
+
     $.ajax({
         url : 'includes/activity_update_color.php',
         type : 'post',
-        dataType: "json",
+        dataType: "html",
         data : {
             id : parsedID,
             color : color
         },
 
         success : function (data) {
-            // console.log('Je updatnuty');
+            console.log('Je updatnuty');
         },
 
-        error : function () {
-            // console.log("neni updatnuty");
+        error : function (xhr, status, error) {
+            console.log("neni updatnuty");
+            console.log(status);
+            console.log(error);
+            console.log(xhr)
         }
 
     });

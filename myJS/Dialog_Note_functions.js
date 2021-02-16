@@ -14,19 +14,7 @@ function createActivity(id, xPos, yPos, color, content, importance) {
     let pin = $('<div class="pin"></div>');
 
     // Create colorpicker with options
-    let colorPicker = $('<input type="text" class="my_color_picker" data-toggle="tooltip" title="Change color">').colorpicker({
-        ok: function () {
-
-            // TODO: remove replace console log with something different
-            if (jQuery.isEmptyObject($(this).val())) {
-                console.log("null");
-            }else {
-                callAJAXColorUpdate($(this), "#" + $(this).val());
-                console.log("daco");
-            }
-
-            note.css('background-color', "#" + $(this).val());
-        }});
+    let colorPicker = $('<input type="color" class="my_color_picker" data-toggle="tooltip" title="Change color">')
 
     // Create icons (edit & remove)
     let editTextIcon = $('<i class="fa fa-pencil" aria-hidden="true" style="font-size: 20px; cursor: pointer" data-toggle="tooltip" title="Edit note"></i>');

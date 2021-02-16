@@ -4,6 +4,7 @@ $(document).ready(function () {
     callAJAXSetAllActivities();
 
     // By pressing this button new note is going to be created
+
     $('#newNote').click(function() {
 
         $.ajax({

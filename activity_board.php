@@ -6,7 +6,6 @@
 
 <!--Div for keep id when content is change-->
 <div style="display: none;" id="tmp"></div>
-<p>Hello</p>
 
 <!-- Crease paper audio-->
 <!--<audio id="sound">-->

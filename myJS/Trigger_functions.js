@@ -86,4 +86,13 @@ dateDiv.on('click', '#arrowRight', function () {
     callAJAXSetAllActivities();
 })
 
+draggable.on('change', '.my_color_picker', function () {
+    let color = $(this).val();
+    callAJAXColorUpdate($(this), color);
+
+    $(this).parent().css('background-color', color);
+})
+
+
+
 
