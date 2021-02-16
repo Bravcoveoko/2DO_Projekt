@@ -3,6 +3,8 @@ Skolsky projekt
 
 
 - Install Node.js
-- npm install jquery
-- npm install vanderlee-colorpicker
-- npm i jquery-ui
+
+run:
+    - npm install jquery
+    - npm install vanderlee-colorpicker
+    - npm i jquery-ui
