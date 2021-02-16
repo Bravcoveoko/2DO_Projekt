@@ -7,12 +7,6 @@
 <!--Div for keep id when content is change-->
 <div style="display: none;" id="tmp"></div>
 
-<!-- Crease paper audio-->
-<!--<audio id="sound">-->
-<!--    <source src="pokrcenie.mp3" type="audio/ogg">-->
-<!--</audio>-->
-
-<!-- Choose date TODO-->
 <div id="date">
     <p>
         <a href="#" id="newNote">Create new note</a>

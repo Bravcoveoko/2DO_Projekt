@@ -15,9 +15,9 @@ draggable.on("mouseup", ".sticky", function() {
 // Open dialog popup box when we click on pencil icon
 draggable.on("click", ".fa-pencil", function() {
 
-    console.log($(this).attr('id'));
-
     $('#tmp').text($(this).attr('id'));
+
+    $('#myArea').val($(this).parent().find('p').text());
 
     $("#dialog").dialog("open");
 
