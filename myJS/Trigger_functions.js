@@ -15,11 +15,13 @@ draggable.on("mouseup", ".sticky", function() {
 // Open dialog popup box when we click on pencil icon
 draggable.on("click", ".fa-pencil", function() {
 
+    console.log($('#myModal'));
+
     $('#tmp').text($(this).attr('id'));
 
     $('#myArea').val($(this).parent().find('p').text());
 
-    $("#dialog").dialog("open");
+    $("#myModal").css('display', 'block');
 
 })
 
@@ -67,6 +69,25 @@ dateDiv.on('click', '#arrowLeft', function () {
     datepicker.datepicker('setDate', currentDate);
 
     callAJAXSetAllActivities();
+})
+
+dateDiv.on('change', '#datepicker', function () {
+    let newDate = datepicker.datepicker('getDate');
+
+    datepicker.datepicker('setDate', newDate);
+
+    callAJAXSetAllActivities();
+})
+
+// Open dialog popup box when we click on pencil icon
+draggable.on("click", ".fa-pencil", function() {
+
+    $('#tmp').text($(this).attr('id'));
+
+    $('#myArea').val($(this).parent().find('p').text());
+
+    $("#dialog").dialog("open");
+
 })
 
 // Subtract on day

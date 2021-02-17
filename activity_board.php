@@ -17,7 +17,7 @@
     </p>
 </div>
 
-<!-- Popup box-->
+<!--popup box-->
 <div id="dialog" title="Basic dialog">
     <textarea id="myArea" style="width: 260px; height: 100px;"></textarea>
 </div>
