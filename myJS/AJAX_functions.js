@@ -43,16 +43,10 @@ function callAJAXSetAllActivities() {
         },
 
         success : function (data) {
-            console.log(data);
             setActivities(data);
         },
 
         error : function(xhr, status, error) {
-            // var err = JSON.parse(xhr.responseText);
-            window.href = ''
-            console.log('dsdsds');
-            console.log(status);
-            console.log(error);
             window.location.href = "index.php"
         },
 

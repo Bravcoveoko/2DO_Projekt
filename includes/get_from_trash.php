@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Get all activities which have trashed status
+ * Get all activities which have trashed status from chosen date
  */
 
 if (empty($conn)) {

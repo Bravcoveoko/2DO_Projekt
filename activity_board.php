@@ -1,3 +1,4 @@
+
 <?php include 'includes/config.php' ?>
 <?php require 'includes/head_section.php' ?>
 <?php include 'includes/navbar.php' ?>
@@ -25,30 +26,8 @@
 <!-- Place where are all activities-->
 <div id="draggable" ></div>
 
-
-<script>
-    $('#trash').click(function () {
-        window.location.href = "trash.php?date=" + datepicker.val();
-    })
-</script>
-
 <!-- Prepare datepicker -->
-<script>
-
-    $( function() {
-        $( "#datepicker" ).datepicker({
-            showWeek: true,
-            firstDay: 1,
-            currentText: "Now",
-            dateFormat: 'dd.mm.yy',
-            showAnim: "show",
-            defaultDate: new Date()
-        }).datepicker("setDate", new Date());
-    } );
-
-    let datepicker = $('#datepicker');
-</script>
-
+<script src="myJS/DatePickerAndTrash_setup.js"></script>
 <!-- All AJAX functions -->
 <script src="myJS/AJAX_functions.js"></script>
 <!-- On ready -->
