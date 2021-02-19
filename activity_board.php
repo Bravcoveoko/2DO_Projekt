@@ -1,4 +1,4 @@
-
+<?php include 'includes/check_cookies.php'?>
 <?php include 'includes/config.php' ?>
 <?php require 'includes/head_section.php' ?>
 <?php include 'includes/navbar.php' ?>
