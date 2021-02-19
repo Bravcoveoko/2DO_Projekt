@@ -15,8 +15,10 @@
     </div>
 </div>
 
-
 <canvas id="myCanvas"></canvas>
+
+
+
 
 
 <script src="myJS/graphScript.js"></script>

@@ -9,57 +9,32 @@ require 'config.php';
 $username = '';
 $password = '';
 
-if (isset($_POST['login_btn'])) {
+if ( isset($_POST['login_btn']) ) {
 
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    if (empty($conn)) {
+    if ( empty($conn) ) {
         header("Location: ../login.php?error=Something+wrong+with+database");
         exit();
     }
 
-    $sql = "SELECT * FROM users WHERE userName='". mysqli_real_escape_string($conn, $username) ."'";
-
-    // SQL injection
-//    $sql = "SELECT * FROM users WHERE userName=" . $username;
-
-
-    $result = mysqli_query($conn, $sql);
-
-    // sql injection
-//    mysqli_multi_query($conn, $sql);
-//
-//    echo $sql;
-//
-//    do {
-//        /* store first result set */
-//        if ($res = $conn->store_result()) {
-//            while ($row = $res->fetch_row()) {
-//                printf("%s\n", $row[0]);
-//            }
-//            $res->free();
-//        }
-//        /* print divider */
-//        if ($conn->more_results()) {
-//            printf("-----------------\n");
-//        }
-//    } while ($conn->next_result());
-
-
+    $sql = 'SELECT * FROM users WHERE userName = :userName';
+    $statement = $conn->prepare($sql);
+    $statement->execute(['userName' => $username]);
+    $result = $statement->fetch();
 
     // If user is found cookies are set
-    if (mysqli_num_rows($result) == 1) {
-        $person = mysqli_fetch_assoc($result);
+    if ( $result ) {
 
-        if ( !password_verify($password, $person['password']) ) {
+        if ( !password_verify($password, $result->password) ) {
             header("Location: ../login.php?error=Invalid+password");
             exit();
         }
 
         // Set cookies
-        setcookie('userName', $person['userName'],  time() + 3600, '/');
-        setcookie('userID', $person['id'], time() + 3600, '/');
+        setcookie('userName', $result->userName,  time() + 3600, '/');
+        setcookie('userID', $result->id, time() + 3600, '/');
 
         header("Location: ../activity_board.php");
     }else {

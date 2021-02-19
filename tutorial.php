@@ -95,24 +95,6 @@
 
     <img src="images/Picture13.png" class="mx-auto d-block" alt="...">
 
-    <br>
-    <hr style="width: 50%">
-
-    <p class="tutorial_text">If you have an important meeting or just need to mark that your note is more important than others, just  click on the exclamation mark icon and your note will be highlighted. Every note you highlight an email will be send as a notification on date it was created</p>
-
-    <br>
-
-    <img src="images/Picture7.png" class="mx-auto d-block" alt="...">
-
-    <br>
-    <hr style="width: 50%">
-
-    <p class="tutorial_text">Note is now highlighted</p>
-
-    <br>
-
-    <img src="images/Picture8.png" class="mx-auto d-block" alt="..." style="margin-bottom: 10px">
-
     <a id="scrollUp">Scroll up</a>
 
 </div>

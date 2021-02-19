@@ -47,7 +47,8 @@ function callAJAXSetAllActivities() {
         },
 
         error : function(xhr, status, error) {
-            window.location.href = "index.php"
+            // window.location.href = "index.php"
+            console.log(xhr);
         },
 
     });

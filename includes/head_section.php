@@ -16,5 +16,5 @@
 <!--JS-->
 <script src="jqueryUI/external/jquery/jquery.js"></script>
 <script src="jqueryUI/jquery-ui.js"></script>
-<script src="node_modules/vanderlee-colorpicker/jquery.colorpicker.js"></script>
-<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--<script src="node_modules/vanderlee-colorpicker/jquery.colorpicker.js"></script>-->
+<!--<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>-->
