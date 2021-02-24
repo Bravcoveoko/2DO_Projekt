@@ -1,5 +1,7 @@
 <?php
 
+// DONE
+
 require 'config.php';
 require 'checkers.php';
 
@@ -8,7 +10,7 @@ require 'checkers.php';
  * Register user. Username and password have to pass all check function. After success cookies are set
  */
 
-if (isset($_POST['register_btn'])) {
+if ( isset($_POST['register_btn']) ) {
 
     $email = $_POST['email'];
     $username = $_POST['username'];
@@ -75,53 +77,54 @@ if (isset($_POST['register_btn'])) {
         exit();
     }
 
-    $sqlUserName = "SELECT * FROM users WHERE userName='" . mysqli_real_escape_string($conn, $username) . "'";
-
-
-    $result = mysqli_query($conn, $sqlUserName);
-
-    $row = mysqli_num_rows($result);
+    $sqlCheckDuplicity = 'SELECT * FROM users WHERE userName = :userName';
+    $statement = $conn->prepare($sqlCheckDuplicity);
+    $statement->execute(['userName' => $username]);
+    $result = $statement->fetch();
 
     // Duplicate username
-    if ($row > 0) {
+    if ( $result ) {
         header("Location: ../registration.php?error=Username+already+exists");
         exit();
     }
 
-    $sqlEmail = "SELECT * FROM users WHERE email='" . mysqli_real_escape_string($conn, $email) . "'";
-
-    $result = mysqli_query($conn, $sqlEmail);
-
-    $row = mysqli_num_rows($result);
+    $sqlCheckEmail = 'SELECT * FROM users WHERE email = :email';
+    $statement = $conn->prepare($sqlCheckEmail);
+    $statement->execute(['email' => $email]);
+    $result = $statement->fetch();
 
     // Email duplicate
-    if ($row > 0) {
+    if ( $result ) {
         header("Location: ../registration.php?error=Email+is+already+taken");
         exit();
     }
 
     $date = date('Y-m-d H:i:s');
-
     $hashedPassword = password_hash($password, PASSWORD_ARGON2I);
 
-    $sqlInsert = "INSERT INTO users ( userName, email, password, created_at)
-                VALUES ('". mysqli_real_escape_string($conn, $username) ."', '". mysqli_real_escape_string($conn, $email) ." ', '". $hashedPassword ."', '$date')";
+    $sqlInsert = 'INSERT INTO users ( userName, email, password, created_at) VALUES ( :userName, :email, :password, :created_at)';
+    $statement = $conn->prepare($sqlInsert);
+    $checkSuccess = $statement->execute(['userName' => $username, 'email' => $email, 'password' => $hashedPassword, 'created_at' => $date]);
 
-    $res = mysqli_query($conn, $sqlInsert);
+    if ( !$checkSuccess ) {
+        header("Location: ../registration.php?error=Something+wrong+with+registration");
+        exit();
+    }
 
-    $sqlGetPerson = "SELECT * FROM users WHERE userName ='$username'";
+    $sqlGetNewPerson = 'SELECT * FROM users WHERE userName = :userName';
+    $statement = $conn->prepare($sqlGetNewPerson);
+    $statement->execute(['userName' => $username]);
+    $user = $statement->fetch();
 
 
 
-    if ($res) {
-
-        $result = mysqli_query($conn, $sqlGetPerson);
-        $person = mysqli_fetch_assoc($result);
+    if ( $user ) {
 
         setcookie('userName', null, -1, '/');
         setcookie('userName', $username,  time() + 3600, '/');
-        setcookie('userID', $person['id'], time() + 3600, '/');
+        setcookie('userID', $user->id, time() + 3600, '/');
         header("Location: ../activity_board.php");
+
     }else {
         header("Location: ../registration.php?error=No+user+was+inserted");
         exit();

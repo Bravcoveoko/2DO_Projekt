@@ -1,5 +1,7 @@
 <?php
 
+// DONE
+
 include 'config.php';
 
 /**
@@ -9,14 +11,13 @@ include 'config.php';
 setcookie('userName', null, -1, '/');
 
 
-if (empty($conn)) {
+if ( empty($conn) ) {
     header("Location: ../index.php");
     return;
 }
 
-// Remove all notes which are in trash
-$sql = "DELETE FROM activities WHERE is_trashed=1";
-
-$res = mysqli_query($conn, $sql);
+$sql = 'DELETE FROM activities WHERE is_trashed = 1';
+$statement = $conn->prepare($sql);
+$statement->execute();
 
 header("Location: ../index.php");

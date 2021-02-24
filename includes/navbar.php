@@ -17,7 +17,7 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <?php  if (!isset($_COOKIE['userName'])): ?>
+            <?php  if ( !isset($_COOKIE['userName']) ): ?>
             <li class="nav-item">
                 <a class="nav-link" href="login.php">Login</a>
             </li>
@@ -27,7 +27,7 @@
             <?php endif;?>
 
 
-            <?php if (isset($_COOKIE['userName'])): ?>
+            <?php if ( isset($_COOKIE['userName']) ): ?>
                 <li class="nav-item">
                     <a class="nav-link" href="includes/logout.php">Logout</a>
                 </li>
