@@ -19,18 +19,18 @@
 
 .btn {
     left: 0px;
-    background-color: #723CB4;
-    border-color: #723CB4;
+    background-color: #66997F;
+    border-color: #66997F;
     transition: background-color 1s;
 }
 
 .btn:hover {
-    border-color: #723CB4;
-    background-color:  #522F8E;
+    border-color: #66997F;
+    background-color:  #3D5C4C;
 }
 
 span {
-    color: #723CB4;
+    color: #66997F;
 }
 
 .checkbox {

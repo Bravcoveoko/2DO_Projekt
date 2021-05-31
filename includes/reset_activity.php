@@ -13,6 +13,7 @@ if ( empty($conn) ) {
     return;
 }
 
-$sql = "UPDATE activities SET is_trashed = 0 WHERE id = " . mysqli_real_escape_string($conn, $id);
+$sqlResetActivity = "UPDATE activities SET is_trashed = 0 WHERE id = :actID";
 
-$res = mysqli_query($conn, $sql);
+$statement = $conn->prepare($sqlResetActivity);
+$statement->execute(['actID' => $id]);

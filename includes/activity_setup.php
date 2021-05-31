@@ -16,16 +16,17 @@ if (empty($conn)) {
     return;
 }
 
-$sqlGetAllAct = "SELECT * FROM activities WHERE user_id='" . mysqli_real_escape_string($conn, $id) ."'
-                    AND created_at='" . mysqli_real_escape_string($conn, $newDate) ."'AND is_trashed=0";
+$sqlGetAllAct = "SELECT * FROM activities WHERE user_id = :userID
+                    AND created_at = :createdAt AND is_trashed = 0";
 
-$res = mysqli_query($conn, $sqlGetAllAct);
+$statement = $conn->prepare($sqlGetAllAct);
+$statement->execute(['userID' => $id, 'createdAt' => $newDate]);
+$res = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-// Fetch them together and send back
-
+// Put all activities in array
 $rows = array();
-while($row = $res->fetch_assoc()) {
-    $rows[] = $row;
+foreach ($res as $item) {
+    $rows[] = $item;
 }
 
 echo json_encode($rows);

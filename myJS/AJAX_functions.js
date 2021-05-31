@@ -105,11 +105,11 @@ function callAJAXPositionUpdate(xPos, yPos, id) {
         },
 
         success : function (data) {
-            // console.log('Je updatnuty');
+            console.log('Je updatnuty');
         },
 
         error : function () {
-            // console.log("neni updatnuty");
+            console.log("neni updatnuty");
         }
 
     });

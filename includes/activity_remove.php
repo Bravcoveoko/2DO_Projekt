@@ -15,8 +15,8 @@ if (empty($conn)) {
     return;
 }
 
-$sqlRemove = "UPDATE activities SET is_trashed = 1 WHERE id = " . mysqli_real_escape_string($conn, $id);
-
-$res = mysqli_query($conn, $sqlRemove);
+$sqlRemove = "UPDATE activities SET is_trashed = 1 WHERE id = :actID";
+$statement = $conn->prepare($sqlRemove);
+$statement->execute(['actID' => $id]);
 
 echo json_encode(['id' => 'Hello']);

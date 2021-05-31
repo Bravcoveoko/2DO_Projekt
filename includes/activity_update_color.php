@@ -9,13 +9,13 @@ include 'config.php';
 $id = $_POST['id'];
 $color = $_POST['color'];
 
-$sqlActivityUpdate = "UPDATE activities SET color = '$color' WHERE id = '$id'";
-
 if ( empty($conn) ) {
     header("Location: ../index.php");
     return;
 }
 
-$res = mysqli_query($conn, $sqlActivityUpdate);
+$sqlActivityUpdate = "UPDATE activities SET color = :color WHERE id = :actID";
+$statement = $conn->prepare($sqlActivityUpdate);
+$statement->execute(['color' => $color, 'actID' => $id]);
 
 echo json_encode(['id' => 'daco']);

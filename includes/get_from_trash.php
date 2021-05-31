@@ -10,10 +10,16 @@ if (empty($conn)) {
 }
 
 $newDate = date("Y-m-d", strtotime($_GET['date']));
+$userID = $_COOKIE['userID'];
 
 
-$sql = "SELECT * FROM activities WHERE user_id=" . $_COOKIE['userID'] . " AND is_trashed=1 AND created_at='$newDate'";
+$sqlGetFromTrash = 'SELECT * FROM activities WHERE user_id = :userID AND is_trashed = 1 AND created_at = :createdAt';
+$statement = $conn->prepare($sqlGetFromTrash);
+$statement->execute(['userID' => $userID, 'createdAt' => $newDate]);
+$activitiesInTrash = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-$result = mysqli_query($conn, $sql);
+if ( !$activitiesInTrash ) {
+    header("Location: ../index.php");
+    return;
+}
 
-$activitiesInTrash = mysqli_fetch_all($result, MYSQLI_ASSOC);

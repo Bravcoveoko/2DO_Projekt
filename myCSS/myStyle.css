@@ -111,14 +111,14 @@ hr {
     cursor: pointer;
     left: 200px;
     color: white;
-    background-color: #723CB4;;
+    background-color: #66997F;
     text-decoration: none;
     transition: background-color 1s;
     font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", "Comic Neue", cursive;
 }
 
 #newNote:hover {
-    background-color: #522F8E;
+    background-color: #3D5C4C;
 }
 
 #arrowRight {
@@ -156,14 +156,14 @@ hr {
     font-size: 24px;
     cursor: pointer;
     color: white;
-    background-color: #723CB4;
+    background-color: #66997F;
     text-decoration: none;
     transition: background-color 1s;
     font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", "Comic Neue", cursive;
 }
 
 #scrollUp:hover {
-    background-color: #522F8E;
+    background-color: #3D5C4C;
 }
 
 
@@ -176,14 +176,14 @@ hr {
     cursor: pointer;
     left: 530px;
     color: white;
-    background-color: #723CB4;
+    background-color: #66997F;
     text-decoration: none;
     transition: background-color 1s;
     font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", "Comic Neue", cursive;
 }
 
 #trash:hover {
-    background-color: #522F8E;
+    background-color: #3D5C4C;
 }
 
 .trashButtons {
@@ -195,13 +195,13 @@ hr {
 
 .reset {
     margin-right: 10px;
-    background-color: #723CB4;
+    background-color: #66997F;
     transition: background-color 1s;
 
 }
 
 .reset:hover {
-    background-color: #522F8E;
+    background-color: #3D5C4C;
 }
 
 .remove {
@@ -236,7 +236,7 @@ html {
     left: 0;
     font-size: 20px;
     color: white;
-    background-color: #723CB4;
+    background-color: #66997F;
     text-align: center;
     padding: 20px 0px;
     margin-top: 10px;
@@ -247,7 +247,7 @@ html {
     cursor: pointer;
     outline: none;
     border: none;
-    background-color: #723CB4;
+    background-color: #66997F;
     color: white;
     width: 400px;
     height: 70px;
@@ -279,7 +279,7 @@ body {
 }
 
 .navbar {
-    background: #723CB4;
+    background: #66997F;
 }
 
 .nav-link {
@@ -331,7 +331,7 @@ body {
 }
 
 #words {
-    color: #723CB4;
+    color: #66997F;
 }
 
 .tutorial_text {
@@ -346,7 +346,7 @@ body {
 }
 
 .text-center h1 {
-    color: #723CB4;
+    color: #66997F;
 }
 
 

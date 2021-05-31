@@ -14,9 +14,8 @@ if (empty($conn)) {
     return;
 }
 
-//$sqlRemove = "DELETE FROM activities WHERE id='$id'";
-$sqlRemove = "DELETE FROM activities WHERE id=" . mysqli_real_escape_string($conn, $id);
-
-$res = mysqli_query($conn, $sqlRemove);
+$sqlRemove = "DELETE FROM activities WHERE id = :actID";
+$statement = $conn->prepare($sqlRemove);
+$statement->execute(['actID' => $id]);
 
 echo json_encode(['id' => 'Hello']);

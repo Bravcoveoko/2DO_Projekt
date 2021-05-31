@@ -16,8 +16,8 @@ if (empty($conn)) {
     return;
 }
 
-$sqlRemove = "UPDATE activities SET is_important = '$value' WHERE id = " . mysqli_real_escape_string($conn, $id);
-
-$res = mysqli_query($conn, $sqlRemove);
+$sqlUpdateImportance = "UPDATE activities SET is_important = :val WHERE id = :actID";
+$statement = $conn->prepare($sqlUpdateImportance);
+$statement->execute(['val' => $value, 'actID' => $id]);
 
 echo json_encode(['id' => 'Hello']);
