@@ -11,8 +11,6 @@ function createActivity(id, xPos, yPos, color, content, importance) {
     // Main activity
     let note = $('<div class="sticky"><b>Note:</b><p></p></div>').draggable({containment: "#draggable"});
 
-    let pin = $('<div class="pin"></div>');
-
     // Create colorpicker with options
     let colorPicker = $('<input type="color" class="my_color_picker" data-toggle="tooltip" title="Change color">')
 
@@ -33,7 +31,6 @@ function createActivity(id, xPos, yPos, color, content, importance) {
     check.attr('id', ("checkID-" + id));
 
     // Append all elements to activity
-    note.append(pin);
     note.append(colorPicker);
     note.append(editTextIcon);
     note.append(removeIcon);

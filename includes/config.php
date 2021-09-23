@@ -2,6 +2,9 @@
 
 /**
  * Connection to DB
+ *
+ * !!! DONT FORGET TO RENAME DB, USERNAME AND PASSWORD !!!!
+ * Using PDO for safer work and avoid SQL injection
  */
 
 $conn = null;
