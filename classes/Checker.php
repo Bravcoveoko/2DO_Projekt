@@ -27,16 +27,16 @@ class Checker {
 
     public function check_username() {
         if ( self::check_length_less($this->userName) ) Routing::redirect('register', Error::ERR_REGISTER_USERNAME_LENGTH_MIN);
-        if ( self::check_length_more($this->userName) ) Routing::redirect('register', Error::ERR_REGISTER_USERNAME_LENGTH_MAX);
-        if ( self::check_first_letter($this->userName) ) Routing::redirect('register', Error::ERR_REGISTER_USERNAME_UPPERCASE);
-        if ( self::check_numbers($this->userName) ) Routing::redirect('register', Error::ERR_REGISTER_USERNAME_NUMBER);
+        if ( !self::check_length_more($this->userName) ) Routing::redirect('register', Error::ERR_REGISTER_USERNAME_LENGTH_MAX);
+        if ( !self::check_first_letter($this->userName) ) Routing::redirect('register', Error::ERR_REGISTER_USERNAME_UPPERCASE);
+        if ( !self::check_numbers($this->userName) ) Routing::redirect('register', Error::ERR_REGISTER_USERNAME_NUMBER);
     }
 
     public function check_password() {
-        if ( self::check_length_less($this->pass1) ) Routing::redirect('register', Error::ERR_REGISTER_PASS_LENGTH_MIN);
-        if ( self::check_length_more($this->pass1) ) Routing::redirect('register', Error::ERR_REGISTER_PASS_LENGTH_MAX);
-        if ( self::check_first_letter($this->pass1) ) Routing::redirect('register', Error::ERR_REGISTER_PASS_UPPERCASE);
-        if ( self::check_numbers($this->pass1) ) Routing::redirect('register', Error::ERR_REGISTER_PASS_NUMBER);
+        if ( !self::check_length_less($this->pass1) ) Routing::redirect('register', Error::ERR_REGISTER_PASS_LENGTH_MIN);
+        if ( !self::check_length_more($this->pass1) ) Routing::redirect('register', Error::ERR_REGISTER_PASS_LENGTH_MAX);
+        if ( !self::check_first_letter($this->pass1) ) Routing::redirect('register', Error::ERR_REGISTER_PASS_UPPERCASE);
+        if ( !self::check_numbers($this->pass1) ) Routing::redirect('register', Error::ERR_REGISTER_PASS_NUMBER);
     }
 
     public function check_email_form() {

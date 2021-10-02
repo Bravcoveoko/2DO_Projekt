@@ -4,7 +4,6 @@
 
 require 'config.php';
 include(ROOT_PATH . '\classes\Checker.php');
-include(ROOT_PATH . '\classes\Routing.php');
 
 use classes\Checker;
 use classes\Routing;
