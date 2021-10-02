@@ -1,4 +1,5 @@
-
+<?php include_once(ROOT_PATH . '\classes\Authentication.php')?>
+<?php use classes\Authentication; ?>
 <nav class="navbar navbar-expand-lg">
     <a href="index.php">
         <img src="images/Logo.png" width="70" height="70" class="d-inline-block align-top" alt="">
@@ -17,7 +18,7 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <?php  if ( !isset($_COOKIE['userName']) ): ?>
+            <?php  if ( !Authentication::is_Authed() ): ?>
             <li class="nav-item">
                 <a class="nav-link" href="login.php">Login</a>
             </li>
@@ -27,12 +28,12 @@
             <?php endif;?>
 
 
-            <?php if ( isset($_COOKIE['userName']) ): ?>
+            <?php if ( Authentication::is_Authed() ): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="includes/logout.php">Logout</a>
+                    <a class="nav-link" href="logout.php">Logout</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="activity_board.php"><?php echo $_COOKIE['userName'] . '\'s '?> activity board</a>
+                    <a class="nav-link" href="activity_board.php"><?php echo Authentication::get_current_user_username() . '\'s '?> activity board</a>
                 </li>
             <?php endif;?>
 
