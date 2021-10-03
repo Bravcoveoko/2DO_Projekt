@@ -1,22 +1,12 @@
 <?php
 
-include 'config.php';
+include '..\config.php';
 
 /**
  * Update content of activity with given id.
  */
 
 
-$id = $_POST['id'];
-$content = $_POST['content'];
-
-if (empty($conn)) {
-    header("Location: ../index.php");
-    return;
-}
-
-$sqlActivityUpdate = "UPDATE activities SET content = :content WHERE id = :actID";
-$statement = $conn->prepare($sqlActivityUpdate);
-$statement->execute(['actID' => $id, 'content' => $content]);
+$DB->update_content_activity( $_POST['content'], $_POST['id']);
 
 echo json_encode(['id' => 'Hello']);

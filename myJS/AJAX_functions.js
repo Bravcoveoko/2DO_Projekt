@@ -109,7 +109,7 @@ function callAJAXPositionUpdate(xPos, yPos, id) {
         },
 
         error : function () {
-            console.log("neni updatnuty");
+            window.location.href = 'http://localhost/stickers/index.php'
         }
 
     });

@@ -20,11 +20,8 @@ $(document).ready(function () {
                 createActivity(data.id, 100, 100, "#bec32f", "New note",  0);
             },
 
-            error : function(xhr, status, error) {
-                // var err = JSON.parse(xhr.responseText);
-                console.log('dsdsds');
-                console.log(status);
-                console.log(error);
+            error : function() {
+                window.location.href = 'http://localhost/stickers/index.php'
             },
 
         });

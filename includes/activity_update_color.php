@@ -1,21 +1,11 @@
 <?php
 
-include 'config.php';
+include '..\config.php';
 
 /**
  * Update color of activity with given id
  */
 
-$id = $_POST['id'];
-$color = $_POST['color'];
-
-if ( empty($conn) ) {
-    header("Location: ../index.php");
-    return;
-}
-
-$sqlActivityUpdate = "UPDATE activities SET color = :color WHERE id = :actID";
-$statement = $conn->prepare($sqlActivityUpdate);
-$statement->execute(['color' => $color, 'actID' => $id]);
+$DB->update_color_activity($_POST['color'], $_POST['id']);
 
 echo json_encode(['id' => 'daco']);

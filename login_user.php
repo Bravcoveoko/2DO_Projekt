@@ -3,7 +3,6 @@
 include 'config.php';
 include_once(ROOT_PATH . "\classes\DB.php");
 include_once(ROOT_PATH . "\classes\Routing.php");
-include(ROOT_PATH . "\classes\Authentication.php");
 
 use classes\Routing;
 use classes\Error;

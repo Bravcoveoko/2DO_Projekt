@@ -5,3 +5,5 @@ include(ROOT_PATH . '\classes\Error.php');
 use classes\DB;
 
 $DB = new DB();
+
+$DB->is_connected('index');
