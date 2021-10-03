@@ -2,7 +2,6 @@
 
 
 namespace classes;
-use classes\Error;
 
 class Authentication {
 
@@ -12,7 +11,6 @@ class Authentication {
 
     public static function clear_session() {
         session_unset();
-        session_destroy();
     }
 
     public static function set_session(string $user_name, string $user_id) {
@@ -29,9 +27,7 @@ class Authentication {
     }
 
     public static function noAuth_redirect(): void {
-        if ( !self::is_Authed() ) {
-            Routing::redirect('login', Error::ERR_AUTHENTICATION);
-        }
+        if ( !self::is_Authed() ) Routing::redirect('login', Error::ERR_AUTHENTICATION);
     }
 
     public static function Auth_redirect() {

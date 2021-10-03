@@ -4,6 +4,7 @@
 
 require 'config.php';
 include(ROOT_PATH . '\classes\Checker.php');
+include(ROOT_PATH . '\classes\Authentication.php');
 
 use classes\Checker;
 use classes\Routing;
@@ -31,12 +32,22 @@ if ( isset($_POST['register_btn']) ) {
 
     $DB->is_connected('register');
 
-    if ( $DB->get_user_by_username($username) ) Routing::redirect('register', Error::ERR_REGISTER_USERNAME_EXISTS);
-    if ( $DB->get_user_by_email($email) ) Routing::redirect('register', Error::ERR_REGISTER_EMAIL_EXISTS);
+    // Check if username exists
+    if ( $DB->get_user_by_username($username) ) {
+        Routing::redirect('register', Error::ERR_REGISTER_USERNAME_EXISTS);
+        exit();
+    }
+
+    // Check if email exists
+    if ( $DB->get_user_by_email($email) ) {
+        Routing::redirect('register', Error::ERR_REGISTER_EMAIL_EXISTS);
+        exit();
+    }
 
     // Insert user
     if ( !$DB->insert_user($username, $email, $password) ) {
         Routing::redirect('register', Error::ERR_REGISTER_UNKNOWN);
+        exit();
     }
 
     $user = $DB->get_user_by_username($username);

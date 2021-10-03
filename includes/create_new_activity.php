@@ -2,28 +2,32 @@
 
 // DONE
 
+use classes\Routing;
+include_once(ROOT_PATH . '\classes\Error.php');
+use classes\Error;
+
 include 'config.php';
 
 /**
  * Create new activity to DB and return ID
  */
 
-$user_id = $_COOKIE['userID'];
+//if ( empty($conn) ) {
+//    header("Location: ../index.php");
+//    exit();
+//}
 
-$getDate = $_POST['date'];
+echo $_SERVER['SERVER_NAME'];
+exit();
 
-$newDate = date("Y-m-d", strtotime($getDate));
+$DB->is_connected('index');
 
-if ( empty($conn) ) {
-    header("Location: ../index.php");
+if ( !$DB->insert_activity($_POST['date']) ) {
+    Routing::redirect('login', Error::ERR_DB_ISSUE);
     exit();
 }
 
 
-$sqlInsertActivity = 'INSERT INTO activities (user_id, x_position, y_position, color, content, created_at, is_trashed, is_important) VALUES (:userID, :xPos, :yPos, :color, :content, :created_at, :trashed, :important)';
-
-$statement = $conn->prepare($sqlInsertActivity);
-$check = $statement->execute(['userID' => $user_id, 'xPos' => 100, 'yPos' => 100, 'color' => '#bec32f', 'content' => 'New note', 'created_at' => $newDate, 'trashed' => 0, 'important' => 0]);
 
 if ( !$check ) {
     header("Location: ../index.php");

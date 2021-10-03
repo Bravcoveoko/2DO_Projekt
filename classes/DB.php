@@ -3,10 +3,12 @@
 
 namespace classes;
 include_once 'Routing.php';
+include_once 'Authentication.php';
 
 
 use PDO;
 use PDOException;
+use classes\Authentication;
 
 class DB {
 
@@ -14,6 +16,8 @@ class DB {
     private const SQL_GET_USER_BY_USERNAME = 'SELECT * FROM users WHERE userName = :userName';
     private const SQL_GET_USER_BY_EMAIL = 'SELECT * FROM users WHERE email = :email';
     private const SQL_INSERT_USER = 'INSERT INTO users ( userName, email, password, created_at) VALUES ( :userName, :email, :password, :created_at)';
+    private const SQL_UPDATE_ACTIVITY = 'UPDATE activities SET content = :content WHERE id = :actID';
+    private const SQL_INSERT_ACTIVITY = 'INSERT INTO activities (user_id, x_position, y_position, color, content, created_at, is_trashed, is_important) VALUES (:userID, :xPos, :yPos, :color, :content, :created_at, :trashed, :important)';
 
     /**
      * DB constructor.
@@ -59,7 +63,7 @@ class DB {
     }
 
     public function get_user_by_username($userName) {
-        $statement = $this->conn->prepare(self::SQL_INSERT_USER);
+        $statement = $this->conn->prepare(self::SQL_GET_USER_BY_USERNAME);
         $statement->execute(['userName' => $userName]);
 
         return $statement->fetch();
@@ -79,7 +83,20 @@ class DB {
         return $statement->fetch();
     }
 
-    public function insert_activity() {
+    public function insert_activity($date) {
+        $statement = $this->conn->prepare(self::SQL_INSERT_ACTIVITY);
+        $newDate = date("Y-m-d", strtotime($date));
+        return $statement->execute(['userID' => Authentication::get_current_user_id(),
+            'xPos' => 100,
+            'yPos' => 100,
+            'color' => '#bec32f',
+            'content' => 'New note',
+            'created_at' => $newDate,
+            'trashed' => 0,
+            'important' => 0]);
+    }
+
+    public static function update_activity() {
 
     }
 
