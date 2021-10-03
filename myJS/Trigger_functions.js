@@ -15,8 +15,6 @@ draggable.on("mouseup", ".sticky", function() {
 // Open dialog popup box when we click on pencil icon
 draggable.on("click", ".fa-pencil", function() {
 
-    console.log($('#myModal'));
-
     $('#tmp').text($(this).attr('id'));
 
     $('#myArea').val($(this).parent().find('p').text());
@@ -26,21 +24,6 @@ draggable.on("click", ".fa-pencil", function() {
 })
 
 // ************** CHECK *********************
-draggable.on("click", ".fa-exclamation", function () {
-    console.log($(this).attr('id'));
-
-    if ( $(this).css('color') === "rgb(255, 0, 0)" ) {
-
-        $(this).css({"color": "black"});
-        callAJAXImportanceUpdate($(this).attr('id'), false);
-
-    }else {
-
-        $(this).css({"color": "red"});
-        callAJAXImportanceUpdate($(this).attr('id'), true);
-    }
-
-})
 
 // Remove activity when we click on remove icon and play sound
 draggable.on("click", ".fa-times", function() {

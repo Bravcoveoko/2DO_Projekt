@@ -6,4 +6,6 @@ use classes\DB;
 
 $DB = new DB();
 
+$DB->start_session();
+
 $DB->is_connected('index');

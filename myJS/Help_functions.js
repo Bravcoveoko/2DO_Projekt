@@ -19,9 +19,8 @@ function setActivities(data) {
             let yPos = data[i]['y_position'];
             let color = data[i]['color'];
             let content = data[i]['content'];
-            let importance = data[i]['is_important'];
 
-            createActivity(id, xPos, yPos, color, content, importance);
+            createActivity(id, xPos, yPos, color, content);
 
         })();
     }

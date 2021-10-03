@@ -11,11 +11,9 @@ function callAJAXDeleteActivity(id) {
         },
 
         success : function () {
-            console.log('Vymazany');
         },
 
         error : function () {
-            console.log("neni vymazany");
         }
 
     });
@@ -46,42 +44,11 @@ function callAJAXSetAllActivities() {
             setActivities(data);
         },
 
-        error : function(xhr, status, error) {
-            // window.location.href = "index.php"
-            console.log(xhr);
+        error : function() {
         },
 
     });
 
-}
-
-// Update is_important attribute
-function callAJAXImportanceUpdate(id, value) {
-
-    let parsedID = getIdFromString(id);
-
-    $.ajax({
-        url : 'includes/activity_update_importance.php',
-        type : 'post',
-        dataType: "json",
-        data : {
-            id : parsedID,
-            value: value
-        },
-
-        success : function (data) {
-            console.log(data);
-            console.log("imporant " + parsedID);
-        },
-
-        error : function(xhr, status, error) {
-            // var err = JSON.parse(xhr.responseText);
-            console.log('dsdsds');
-            console.log(status);
-            console.log(error);
-        },
-
-    });
 }
 
 // *******************************************
@@ -104,8 +71,7 @@ function callAJAXPositionUpdate(xPos, yPos, id) {
             yPos : yPos
         },
 
-        success : function (data) {
-            console.log('Je updatnuty');
+        success : function () {
         },
 
         error : function () {
@@ -132,12 +98,9 @@ function callAJAXContentUpdate(id) {
         },
 
         success : function () {
-            console.log('Je content');
-
         },
 
         error : function () {
-            console.log("neni content");
         }
 
     });
@@ -153,9 +116,6 @@ function callAJAXColorUpdate(that, color) {
 
     let parsedID = getIdFromString(that.attr('id'));
 
-    console.log(parsedID);
-    console.log(color);
-
     $.ajax({
         url : 'includes/activity_update_color.php',
         type : 'post',
@@ -165,15 +125,10 @@ function callAJAXColorUpdate(that, color) {
             color : color
         },
 
-        success : function (data) {
-            console.log('Je updatnuty');
+        success : function () {
         },
 
-        error : function (xhr, status, error) {
-            console.log("neni updatnuty");
-            console.log(status);
-            console.log(error);
-            console.log(xhr)
+        error : function () {
         }
 
     });

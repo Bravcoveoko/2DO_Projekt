@@ -3,8 +3,6 @@ $(document).ready(function () {
     // Set all activities for logged user
     callAJAXSetAllActivities();
 
-    console.log(datepicker.val());
-
     // By pressing this button new note is going to be created
 
     $('#newNote').click(function() {
@@ -17,7 +15,7 @@ $(document).ready(function () {
                 date : datepicker.val()
             },
             success : function (data) {
-                createActivity(data.id, 100, 100, "#bec32f", "New note",  0);
+                createActivity(data.id, 100, 100, "#bec32f", "New note");
             },
 
             error : function() {

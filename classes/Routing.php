@@ -9,7 +9,7 @@ class Routing {
     const routes = [
         'board' => 'activity_board.php',
         'login' => 'login.php',
-        'index' => '..\index.php',
+        'index' => 'index.php',
         'register' => 'registration.php',
         'trash' => 'trash.php'
     ];

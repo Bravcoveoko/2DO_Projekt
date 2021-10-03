@@ -23,8 +23,13 @@ class DB {
     private const SQL_TRASH_ACTIVITY = 'UPDATE activities SET is_trashed = 1 WHERE id = :actID';
     private const SQL_GET_TRASHED_ACTIVITIES = 'SELECT * FROM activities WHERE user_id = :userID AND is_trashed = 1 AND created_at = :createdAt';
     private const SQL_SETUP_ACTIVITIES = 'SELECT * FROM activities WHERE user_id = :userID AND created_at = :createdAt AND is_trashed = 0';
-    private const SQL_INSERT_ACTIVITY = 'INSERT INTO activities (user_id, x_position, y_position, color, content, created_at, is_trashed, is_important) VALUES (:userID, :xPos, :yPos, :color, :content, :created_at, :trashed, :important)';
+    private const SQL_INSERT_ACTIVITY = 'INSERT INTO activities (user_id, x_position, y_position, color, content, created_at, is_trashed) VALUES (:userID, :xPos, :yPos, :color, :content, :created_at, :trashed)';
     private const SQL_REMOVE_ACTIVITY = 'DELETE FROM activities WHERE id = :actID';
+
+    private const SQL_DELETE_USERS = 'DELETE FROM users';
+    private const SQL_DELETE_ACTIVITIES = 'DELETE FROM activities';
+    private const SQL_ALTER_TABLE_USERS = 'ALTER TABLE users AUTO_INCREMENT = 1';
+    private const SQL_ALTER_TABLE_ACTIVITIES = 'ALTER TABLE activities AUTO_INCREMENT = 1';
 
     /**
      * DB constructor.
@@ -37,8 +42,6 @@ class DB {
             $this->conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-
-            $this->start_session();
 
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
@@ -63,7 +66,7 @@ class DB {
         }
     }
 
-    private function start_session() {
+    public function start_session() {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
@@ -99,8 +102,7 @@ class DB {
             'color' => '#bec32f',
             'content' => 'New note',
             'created_at' => $newDate,
-            'trashed' => 0,
-            'important' => 0]);
+            'trashed' => 0]);
     }
 
     public function update_position_activity($xPos, $yPos, $id): void {
@@ -143,12 +145,30 @@ class DB {
 
 
     public function setup_activities($date) {
-
         $newDate = date("Y-m-d", strtotime($date));
         $statement = $this->conn->prepare(self::SQL_SETUP_ACTIVITIES);
         $statement->execute(['userID' => Authentication::get_current_user_id(), 'createdAt' => $newDate]);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function delete_users() {
+        $statement = $this->conn->prepare(self::SQL_DELETE_USERS);
+        $statement->execute();
+    }
+
+    public function delete_activities() {
+        $statement = $this->conn->prepare(self::SQL_DELETE_ACTIVITIES);
+        $statement->execute();
+    }
+
+    public function alter_users() {
+        $statement = $this->conn->prepare(self::SQL_ALTER_TABLE_USERS);
+        $statement->execute();
+    }
+
+    public function alter_activities() {
+        $statement = $this->conn->prepare(self::SQL_ALTER_TABLE_ACTIVITIES);
+        $statement->execute();
+    }
 
 }
