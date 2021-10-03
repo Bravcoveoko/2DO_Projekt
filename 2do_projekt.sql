@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 15, 2020 at 08:02 PM
--- Server version: 5.7.24
--- PHP Version: 7.2.19
+-- Hostiteľ: localhost
+-- Čas generovania: Ne 03.Okt 2021, 17:01
+-- Verzia serveru: 5.7.24
+-- Verzia PHP: 7.4.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `2do_projekt`
+-- Databáza: `2do_projekt`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `activities`
+-- Štruktúra tabuľky pre tabuľku `activities`
 --
 
 CREATE TABLE `activities` (
@@ -35,22 +35,17 @@ CREATE TABLE `activities` (
   `color` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `content` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` date NOT NULL,
-  `is_trashed` tinyint(1) NOT NULL,
-  `is_important` tinyint(1) NOT NULL
+  `is_trashed` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `activities`
+-- Sťahujem dáta pre tabuľku `activities`
 --
-
-INSERT INTO `activities` (`id`, `user_id`, `x_position`, `y_position`, `color`, `content`, `created_at`, `is_trashed`, `is_important`) VALUES
-(36, 11, 700, 52, '#870acb', 'SEND NUDES xDDD hihi', '2020-12-15', 0, 1),
-(37, 11, 864, 376, '#bec32f', 'New note', '2020-12-16', 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Štruktúra tabuľky pre tabuľku `users`
 --
 
 CREATE TABLE `users` (
@@ -62,52 +57,48 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `userName`, `email`, `password`, `created_at`) VALUES
-(10, 'Lukas21', 'hhhh@gmail.com ', '$argon2i$v=19$m=1024,t=2,p=2$MkMyc09Ndk5YcWlqQjN6MQ$MKR4sYdRFv0jNP8RED/4qjxaHonzcxi3ANAhvhf7QhU', '2020-12-11'),
-(11, 'Lukas1', 'easyboysdev@gmail.com ', '$argon2i$v=19$m=1024,t=2,p=2$QzhOSUNpMHFNcnRobHp0Tw$0FIKvWFuwFumc/Jb8/jM9/6CI3Y+NeOx8VE/MEbgKwU', '2020-12-11');
-
---
--- Indexes for dumped tables
+-- Sťahujem dáta pre tabuľku `users`
 --
 
 --
--- Indexes for table `activities`
+-- Kľúče pre exportované tabuľky
+--
+
+--
+-- Indexy pre tabuľku `activities`
 --
 ALTER TABLE `activities`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `users`
+-- Indexy pre tabuľku `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pre exportované tabuľky
 --
 
 --
--- AUTO_INCREMENT for table `activities`
+-- AUTO_INCREMENT pre tabuľku `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT pre tabuľku `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- Constraints for dumped tables
+-- Obmedzenie pre exportované tabuľky
 --
 
 --
--- Constraints for table `activities`
+-- Obmedzenie pre tabuľku `activities`
 --
 ALTER TABLE `activities`
   ADD CONSTRAINT `activities_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

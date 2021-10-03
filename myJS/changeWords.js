@@ -1,6 +1,6 @@
 $(function () {
     let count = 0;
-    let words = [" life", " work", " future", " day"];
+    let words = [" life", " work", " day"];
 
     setInterval(function () {
         let obj = $('#words');
