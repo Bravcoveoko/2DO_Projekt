@@ -1,4 +1,4 @@
-<?php include 'includes/config.php' ?>
+<?php include 'config.php' ?>
 <?php require 'includes/head_section.php' ?>
 
 <?php include 'includes/navbar.php'; ?>
