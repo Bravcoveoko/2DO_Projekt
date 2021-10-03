@@ -1,8 +1,7 @@
 <?php include 'config.php' ?>
 <?php include_once(ROOT_PATH . '\classes\Authentication.php')?>
-<?php use classes\Authentication; ?>
 <?php require 'includes/head_section.php' ?>
-<?php include 'includes/navbar.php' ?>>
+<?php include 'includes/navbar.php' ?>
 
 <div class="wrapper">
     <form class="form-signin" autocomplete="off" method="post" action="register_user.php" >

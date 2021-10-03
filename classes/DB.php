@@ -22,6 +22,7 @@ class DB {
     private const SQL_RESET_ACTIVITY = 'UPDATE activities SET is_trashed = 0 WHERE id = :actID';
     private const SQL_TRASH_ACTIVITY = 'UPDATE activities SET is_trashed = 1 WHERE id = :actID';
     private const SQL_GET_TRASHED_ACTIVITIES = 'SELECT * FROM activities WHERE user_id = :userID AND is_trashed = 1 AND created_at = :createdAt';
+    private const SQL_SETUP_ACTIVITIES = 'SELECT * FROM activities WHERE user_id = :userID AND created_at = :createdAt AND is_trashed = 0';
     private const SQL_INSERT_ACTIVITY = 'INSERT INTO activities (user_id, x_position, y_position, color, content, created_at, is_trashed, is_important) VALUES (:userID, :xPos, :yPos, :color, :content, :created_at, :trashed, :important)';
     private const SQL_REMOVE_ACTIVITY = 'DELETE FROM activities WHERE id = :actID';
 
@@ -140,12 +141,14 @@ class DB {
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function setConn(): void
-    {
-        $this->conn = null;
+
+    public function setup_activities($date) {
+
+        $newDate = date("Y-m-d", strtotime($date));
+        $statement = $this->conn->prepare(self::SQL_SETUP_ACTIVITIES);
+        $statement->execute(['userID' => Authentication::get_current_user_id(), 'createdAt' => $newDate]);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-
-
 
 
 }
