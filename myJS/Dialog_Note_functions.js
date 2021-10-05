@@ -10,21 +10,24 @@ function createActivity(id, xPos, yPos, color, content) {
     let note = $('<div class="sticky"><b>Note:</b><p></p></div>').draggable({containment: "#draggable"});
 
     // Create colorpicker with options
-    let colorPicker = $('<input type="color" class="my_color_picker" data-toggle="tooltip" title="Change color">')
+    let colorPicker = $('<input type="color" class="my_color_picker" data-toggle="tooltip" title="Change color" style="opacity: 0">')
 
     // Create icons (edit & remove)
+    let colorPickerIcon = $('<i class="fa fa-paint-brush" aria-hidden="true" style="font-size: 20px; left: 40px; cursor: pointer" data-toggle="tooltip" title="Edit note"></i>');
     let editTextIcon = $('<i class="fa fa-pencil" aria-hidden="true" style="font-size: 20px; cursor: pointer" data-toggle="tooltip" title="Edit note"></i>');
-    let removeIcon = $('<i class="fa fa-times" aria-hidden="true" style="font-size: 20px; left: 130px; cursor: pointer" data-toggle="tooltip" title="Remove note"></i>');
+    let removeIcon = $('<i class="fa fa-times" aria-hidden="true" style="font-size: 20px; left: 150px; cursor: pointer" data-toggle="tooltip" title="Remove note"></i>');
 
     // Set to all their specific ID
     note.attr('id', ("noteID-" + id));
     colorPicker.attr('id', ("colorID-" + id));
+    colorPickerIcon.attr('id', ("colorPickID-" + id));
     editTextIcon.attr('id', ("editID-" + id));
     removeIcon.attr('id', ("removeID-" + id));
 
 
     // Append all elements to activity
     note.append(colorPicker);
+    note.append(colorPickerIcon);
     note.append(editTextIcon);
     note.append(removeIcon);
 

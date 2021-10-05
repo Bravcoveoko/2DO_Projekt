@@ -11,6 +11,13 @@ draggable.on("mouseup", ".sticky", function() {
     callAJAXPositionUpdate($(this).position().left, $(this).position().top, $(this).attr('id'));
 })
 
+draggable.on("click", ".fa-paint-brush", function() {
+
+    let id = getIdFromString($(this).attr('id'))
+    let strID = '#colorID-' + id
+    $(strID).click();
+
+});
 
 // Open dialog popup box when we click on pencil icon
 draggable.on("click", ".fa-pencil", function() {
