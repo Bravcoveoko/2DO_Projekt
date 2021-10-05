@@ -69,7 +69,7 @@ function createVerticesPos() {
 // Put vertex on canvas
 function createVertex(x, y) {
     ctx.fillStyle = color;
-    ctx.arc(x, y, r, 0,Math.PI*2, true);
+    ctx.arc(x, y, r, 0,Math.PI * 2, true);
     ctx.closePath();
 }
 
@@ -82,8 +82,7 @@ function calculateDistance(vertexA, vertexB) {
     return Math.sqrt(((vertexB[0] - vertexA[0])**2) + ((vertexB[1] - vertexA[1])**2));
 }
 
-// Calculate opacity of edges if distance is greater than 130 and less 170
-// where 130 is 100% opacity and 170 is 0% opacity.
+// Calculate opacity of edges if distance is less then 170
 function calculateOpacity(distance) {
     return 1 - (Math.floor(distance / 1.7) / 100);
 }
@@ -129,17 +128,11 @@ function animate() {
 
             //Edge from given A vertex and B vertex.
             // Now we have to choose opacity.
-            if (calculateDistance(vertexA, vertexB) <= 130) {
+            if (calculateDistance(vertexA, vertexB) < 170) {
                 ctx.beginPath();
                 ctx.moveTo(vertexA[0], vertexA[1]);
                 ctx.lineTo(vertexB[0], vertexB[1]);
-                ctx.strokeStyle = 'grey';
-                ctx.stroke();
-            } else if (calculateDistance(vertexA, vertexB) > 130 && calculateDistance(vertexA, vertexB) < 170) {
-                ctx.beginPath();
-                ctx.moveTo(vertexA[0], vertexA[1]);
-                ctx.lineTo(vertexB[0], vertexB[1]);
-                ctx.strokeStyle = 'grey ' + calculateOpacity(calculateDistance(vertexA, vertexB)) + ')';
+                ctx.strokeStyle = '#5284AB';
                 ctx.stroke();
             }
 
