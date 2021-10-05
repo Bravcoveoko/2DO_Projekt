@@ -12,7 +12,7 @@
 
     <br>
 
-    <img src="images/Picture2.png" class="mx-auto d-block" alt="...">
+    <img src="images/Picture1.png" class="mx-auto d-block" alt="...">
 
     <br>
     <hr style="width: 50%">
@@ -21,16 +21,16 @@
 
     <br>
 
-    <img src="images/Picture14.PNG" class="mx-auto d-block" alt="..." width="1382" height="601">
+    <img src="images/Picture2.PNG" class="mx-auto d-block" alt="..." width="1382" height="601">
 
     <br>
     <hr style="width: 50%">
 
-    <p class="tutorial_text">Of course you can also change the color of your note and it’s very simple. Just click on this window and a pop-up will appear where you can choose any color you want. After clicking „<span>OK</span>“ the color of your note will change.</p>
+    <p class="tutorial_text">Of course you can also change the color of your note and it’s very simple. Just click on brush icon and a pop-up will appear where you can choose any color you want.
 
     <br>
 
-    <img src="images/Picture9.png" class="mx-auto d-block" alt="...">
+    <img src="images/Picture3.png" class="mx-auto d-block" alt="...">
 
     <br>
     <hr style="width: 50%">
@@ -66,16 +66,16 @@
 
     <br>
 
-    <img src="images/Picture10.png" class="mx-auto d-block" alt="...">
+    <img src="images/Picture7.png" class="mx-auto d-block" alt="...">
 
     <br>
     <hr style="width: 50%">
 
-    <p class="tutorial_text">Have you accidentally deleted your note? Don’t worry, nothing happened. Your deleted notes are stored in the Trash from where you can return them to your board or delete them completely. Just click „<span>Trash</span>“ button to see all your deleted notes. But <span>BEWARE</span> when you log out all activities in trash will be deleted</p>
+    <p class="tutorial_text">Have you accidentally deleted your note? Don’t worry, nothing happened. Your deleted notes are stored in the Trash from where you can return them to your board or delete them completely. Just click „<span>Trash</span>“ button to see all your deleted notes.</p>
 
     <br>
 
-    <img src="images/Picture11.png" class="mx-auto d-block" alt="...">
+    <img src="images/Picture8.png" class="mx-auto d-block" alt="...">
 
     <br>
     <hr style="width: 50%">
@@ -84,7 +84,7 @@
 
     <br>
 
-    <img src="images/Picture12.png" class="mx-auto d-block" alt="...">
+    <img src="images/Picture9.png" class="mx-auto d-block" alt="...">
 
     <br>
     <hr style="width: 50%">
@@ -93,7 +93,7 @@
 
     <br>
 
-    <img src="images/Picture13.png" class="mx-auto d-block" alt="...">
+    <img src="images/Picture10.png" class="mx-auto d-block" alt="...">
 
     <a id="scrollUp">Scroll up</a>
 
