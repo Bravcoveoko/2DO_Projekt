@@ -5,7 +5,6 @@ namespace classes;
 include_once 'Routing.php';
 include_once 'Authentication.php';
 
-
 use PDO;
 use PDOException;
 use classes\Authentication;
