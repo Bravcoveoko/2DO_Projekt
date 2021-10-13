@@ -13,5 +13,6 @@ $DB->alter_activities();
 
 echo "\e[0;32mData successfully deleted\e[0m\n";
 echo "==========================================\n";
+echo "done\n";
 UsersSeeder::run();
 ActivitiesSeeder::run();
