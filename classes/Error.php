@@ -21,7 +21,6 @@ class Error {
 
     const ERR_LOGIN_PASS = 'Incorrect password';
     const ERR_DB_ISSUE = 'Something wrong with database';
-    // TODO dokoncit
 
     public static function clear_error_session() {
         if (isset($_SESSION)) {
