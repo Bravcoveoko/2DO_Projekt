@@ -15,15 +15,15 @@ class DB {
     private const SQL_GET_USER_BY_USERNAME = 'SELECT * FROM users WHERE userName = :userName';
     private const SQL_GET_USER_BY_EMAIL = 'SELECT * FROM users WHERE email = :email';
     private const SQL_INSERT_USER = 'INSERT INTO users ( userName, email, password, created_at) VALUES ( :userName, :email, :password, :created_at)';
-    private const SQL_UPDATE_CONTENT_ACTIVITY = 'UPDATE activities SET content = :content WHERE id = :actID';
-    private const SQL_UPDATE_POSITION_ACTIVITY = 'UPDATE activities SET x_position = :xPos, y_position = :yPos WHERE id = :ActID';
-    private const SQL_UPDATE_COLOR_ACTIVITY = 'UPDATE activities SET color = :color WHERE id = :actID';
-    private const SQL_RESET_ACTIVITY = 'UPDATE activities SET is_trashed = 0 WHERE id = :actID';
-    private const SQL_TRASH_ACTIVITY = 'UPDATE activities SET is_trashed = 1 WHERE id = :actID';
+    private const SQL_UPDATE_CONTENT_ACTIVITY = 'UPDATE activities SET content = :content WHERE id = :actID  AND user_id = :userid';
+    private const SQL_UPDATE_POSITION_ACTIVITY = 'UPDATE activities SET x_position = :xPos, y_position = :yPos WHERE id = :ActID  AND user_id = :userid';
+    private const SQL_UPDATE_COLOR_ACTIVITY = 'UPDATE activities SET color = :color WHERE id = :actID  AND user_id = :userid';
+    private const SQL_RESET_ACTIVITY = 'UPDATE activities SET is_trashed = 0 WHERE id = :actID  AND user_id = :userid';
+    private const SQL_TRASH_ACTIVITY = 'UPDATE activities SET is_trashed = 1 WHERE id = :actID  AND user_id = :userid';
     private const SQL_GET_TRASHED_ACTIVITIES = 'SELECT * FROM activities WHERE user_id = :userID AND is_trashed = 1 AND created_at = :createdAt';
     private const SQL_SETUP_ACTIVITIES = 'SELECT * FROM activities WHERE user_id = :userID AND created_at = :createdAt AND is_trashed = 0';
     private const SQL_INSERT_ACTIVITY = 'INSERT INTO activities (user_id, x_position, y_position, color, content, created_at, is_trashed) VALUES (:userID, :xPos, :yPos, :color, :content, :created_at, :trashed)';
-    private const SQL_REMOVE_ACTIVITY = 'DELETE FROM activities WHERE id = :actID';
+    private const SQL_REMOVE_ACTIVITY = 'DELETE FROM activities WHERE id = :actID  AND user_id = :userid';
 
     private const SQL_DELETE_USERS = 'DELETE FROM users';
     private const SQL_DELETE_ACTIVITIES = 'DELETE FROM activities';
@@ -106,32 +106,32 @@ class DB {
 
     public function update_position_activity($xPos, $yPos, $id): void {
         $statement = $this->conn->prepare(self::SQL_UPDATE_POSITION_ACTIVITY);
-        $statement->execute(['xPos' => $xPos, 'yPos' => $yPos, 'ActID' => $id]);
+        $statement->execute(['xPos' => $xPos, 'yPos' => $yPos, 'ActID' => $id, 'userid' => Authentication::get_current_user_id()]);
     }
 
     public function update_content_activity($content, $id): void {
         $statement = $this->conn->prepare(self::SQL_UPDATE_CONTENT_ACTIVITY);
-        $statement->execute(['actID' => $id, 'content' => $content]);
+        $statement->execute(['actID' => $id, 'content' => $content, 'userid' => Authentication::get_current_user_id()]);
     }
 
     public function update_color_activity($color, $id): void {
         $statement = $this->conn->prepare(self::SQL_UPDATE_COLOR_ACTIVITY);
-        $statement->execute(['color' => $color, 'actID' => $id]);
+        $statement->execute(['color' => $color, 'actID' => $id, 'userid' => Authentication::get_current_user_id()]);
     }
 
     public function remove_activity($id): void {
         $statement = $this->conn->prepare(self::SQL_REMOVE_ACTIVITY);
-        $statement->execute(['actID' => $id]);
+        $statement->execute(['actID' => $id, 'userid' => Authentication::get_current_user_id()]);
     }
 
     public function reset_activity($id): void {
         $statement = $this->conn->prepare(self::SQL_RESET_ACTIVITY);
-        $statement->execute(['actID' => $id]);
+        $statement->execute(['actID' => $id, 'userid' => Authentication::get_current_user_id()]);
     }
 
     public function trash_activity($id): void {
         $statement = $this->conn->prepare(self::SQL_TRASH_ACTIVITY);
-        $statement->execute(['actID' => $id]);
+        $statement->execute(['actID' => $id, 'userid' => Authentication::get_current_user_id()]);
     }
 
     public function get_trashed_activities($date) {
