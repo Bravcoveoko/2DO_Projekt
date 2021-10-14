@@ -334,6 +334,11 @@ body {
     color: #5284AB;
 }
 
+.navbar {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
 .tutorial_text {
     margin: 0 auto;
     width: 50%;
