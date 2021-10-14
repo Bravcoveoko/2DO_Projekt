@@ -13,11 +13,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Bravcoveoko/2DO_Projekt.git"
-  },
   "author": "LH",
-  "license": "ISC",
-  "homepage": "https://github.com/Bravcoveoko/2DO_Projekt#readme"
+  "license": "ISC"
 }
