@@ -10,6 +10,8 @@ After all dependencies are installed download stable version of JqueryUI (versio
 and put it to the root like so:
 <br>
 
+![stick](https://user-images.githubusercontent.com/41372194/137268733-7d1db3ec-dd30-413d-b6d4-3b4e7b332b1b.PNG)
+
 
 Download the latest stable version of JqueryUI: https://jqueryui.com/download/all/ <br>
 Rename a downloaded file to <strong>'jqueryUI'</strong> for better using. (example: ../jqueryUI/min.css). <br>
