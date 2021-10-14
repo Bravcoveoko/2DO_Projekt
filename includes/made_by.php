@@ -1,0 +1,1 @@
+<p style="margin-top: 10px"><span style="color: #5284AB"><strong>LH</strong></span> &copy; <?php echo date('Y'); ?></p>

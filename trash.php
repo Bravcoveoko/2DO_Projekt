@@ -7,14 +7,14 @@
 <div class="list-group">
     <?php include 'includes/get_from_trash.php' ?>
 
-    <h1 style="color: #723CB4; font-size: 30px; font-weight: bolder">Trash</h1>
+    <h1 style="color: #5284AB; font-size: 30px; font-weight: bolder">Trash</h1>
     <hr>
 
     <?php if(count($activitiesInTrash) == 0) : ?>
         <h2> Nothing in trash :) </h2>
     <?php else : ?>
         <?php foreach($activitiesInTrash as $activity): ?>
-            <a href="#" class="list-group-item list-group-item-action" style="margin-bottom: 10px; cursor:default; box-shadow: 2px 3px grey; border: solid #723CB4" id=" <?php echo "trash-" . $activity['id'] ?> ">
+            <a href="#" class="list-group-item list-group-item-action" style="margin-bottom: 10px; cursor:default; box-shadow: 2px 3px grey; border: solid #5284AB" id=" <?php echo "trash-" . $activity['id'] ?> ">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1"><b>Note:</b></h5>
                     <small><?php

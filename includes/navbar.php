@@ -17,7 +17,7 @@
                 <a class="nav-link" href="tutorial.php">Tutorial</a>
             </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ms-auto">
             <?php  if ( !Authentication::is_Authed() ): ?>
             <li class="nav-item">
                 <a class="nav-link" href="login.php">Login</a>

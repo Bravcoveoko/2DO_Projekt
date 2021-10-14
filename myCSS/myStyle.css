@@ -334,6 +334,11 @@ body {
     color: #5284AB;
 }
 
+.navbar {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
 .tutorial_text {
     margin: 0 auto;
     width: 50%;
@@ -351,6 +356,10 @@ body {
 
 .fa-arrow-right:before, .fa-arrow-left:before {
     color: #5284AB;
+}
+
+.form_align {
+    text-align: center;
 }
 
 
