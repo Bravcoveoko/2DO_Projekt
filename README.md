@@ -18,7 +18,7 @@ When everything is installed, set up your database. Use ```2do_projekt.sql``` fi
 
 <strong>Do not forget edit ```config.php``` file </strong>
 
-When all tables are created you can use following command in your terminal to seeds tables with test data: <br>
+When all tables are created you can use following command in your terminal to seed tables with test data: <br>
 ```php Seeds\run.php```. 
 <br>
 <br>
