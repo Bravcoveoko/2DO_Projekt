@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: localhost
--- Čas generovania: Ne 03.Okt 2021, 17:01
+-- Čas generovania: Št 14.Okt 2021, 07:19
 -- Verzia serveru: 5.7.24
 -- Verzia PHP: 7.4.23
 
@@ -38,10 +38,6 @@ CREATE TABLE `activities` (
   `is_trashed` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Sťahujem dáta pre tabuľku `activities`
---
-
 -- --------------------------------------------------------
 
 --
@@ -55,10 +51,6 @@ CREATE TABLE `users` (
   `password` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Sťahujem dáta pre tabuľku `users`
---
 
 --
 -- Kľúče pre exportované tabuľky
@@ -85,13 +77,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pre tabuľku `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pre tabuľku `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Obmedzenie pre exportované tabuľky

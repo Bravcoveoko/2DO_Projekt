@@ -13,6 +13,15 @@ After all dependencies are installed download stable version of JqueryUI (<stron
 
 ![stick](https://user-images.githubusercontent.com/41372194/137268733-7d1db3ec-dd30-413d-b6d4-3b4e7b332b1b.PNG)
 
+When everything is installed, set up your database. Use ```2do_projekt.sql``` file to generate database in your localhost.
+<br>
 
+<strong>Do not forget edit ```config.php``` file </strong>
+
+When all tables are created you can use following command in your terminal to seeds tables with test data: <br>
+```php Seeds\run.php```. 
+<br>
+<br>
+It will generate 6 users (<i>every user has same the password <strong>(test123)</strong></i>) and their  activities.
 
 [![My GitHub Language Stats](https://github-readme-stats.vercel.app/api/top-langs/?username=Bravcoveoko&langs_count=8&theme=tokyonight)]()
