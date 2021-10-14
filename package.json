@@ -1,0 +1,23 @@
+{
+  "name": "stickers-pack",
+  "version": "1.0.0",
+  "description": "package for stickers project",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "jquery": "^3.6.0",
+    "jquery-ui": "^1.13.0",
+    "vanderlee-colorpicker": "^1.2.16"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bravcoveoko/2DO_Projekt.git"
+  },
+  "author": "LH",
+  "license": "ISC",
+  "homepage": "https://github.com/Bravcoveoko/2DO_Projekt#readme"
+}
