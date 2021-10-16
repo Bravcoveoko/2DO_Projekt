@@ -52,6 +52,18 @@ class DB {
         $this->conn = null;
     }
 
+    public function alive() {
+        // Inactive more than 5 min.
+        if ( isset($_SESSION['time']) && (time() - $_SESSION['time'] > 300) ) {
+            Authentication::clear_session();
+            Routing::redirect('login');
+            die();
+        }
+
+        $_SESSION['time'] = time();
+
+    }
+
     /**
      * @return PDO|null
      */

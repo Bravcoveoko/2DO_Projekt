@@ -16,6 +16,7 @@ class Authentication {
     public static function set_session(string $user_name, string $user_id) {
         $_SESSION['user_name'] = $user_name;
         $_SESSION['user_id'] = $user_id;
+        $_SESSION['time'] = time();
     }
 
     public static function get_current_user_id(): ?int {

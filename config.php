@@ -8,4 +8,6 @@ $DB = new DB();
 
 $DB->start_session();
 
+$DB->alive();
+
 $DB->is_connected('index');
