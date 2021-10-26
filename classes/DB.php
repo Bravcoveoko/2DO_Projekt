@@ -37,10 +37,13 @@ class DB {
 
         try {
 
-            $this->conn = new PDO('mysql:host=localhost;dbname=2do_projekt', "root", "");
+            $this->conn = new PDO('mysql:host=localhost', "root", "");
             $this->conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+
+            $this->create_DB();
+            $this->conn->exec("USE stickers");
 
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
@@ -180,6 +183,48 @@ class DB {
     public function alter_activities() {
         $statement = $this->conn->prepare(self::SQL_ALTER_TABLE_ACTIVITIES);
         $statement->execute();
+    }
+
+
+    public function create_DB() {
+        $this->conn->exec("CREATE DATABASE IF NOT EXISTS stickers");
+    }
+
+    public function create_tables() {
+        $activities_table = "CREATE TABLE activities (
+            id int(11) NOT NULL,
+            user_id int(11) NOT NULL,
+            x_position double NOT NULL,
+            y_position double NOT NULL,
+            color varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+            content text COLLATE utf8_unicode_ci NOT NULL,
+            created_at date NOT NULL,
+            is_trashed tinyint(1) NOT NULL)";
+
+        $users_table = "CREATE TABLE users (
+            id int(11) NOT NULL,
+            userName varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+            email varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+            password varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+            created_at date NOT NULL)";
+
+        $alter_1 = "ALTER TABLE activities
+            ADD PRIMARY KEY (id),
+            ADD KEY user_id (user_id)";
+
+        $alter_2 = "ALTER TABLE users
+            ADD PRIMARY KEY (id)";
+
+        $alter_3 = "ALTER TABLE activities MODIFY id int(11) NOT NULL AUTO_INCREMENT";
+        $alter_4 = "ALTER TABLE users MODIFY id int(11) NOT NULL AUTO_INCREMENT";
+        $alter_5 = "ALTER TABLE activities ADD CONSTRAINT activities_ibfk_1 FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE; COMMIT;";
+
+
+        $this->conn->exec($activities_table);
+        $this->conn->exec($users_table);
+        for ($index = 1; $index < 6; $index++) {
+            $this->conn->exec(${"alter_$index"});
+        }
     }
 
 }
