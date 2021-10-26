@@ -19,10 +19,4 @@ When everything is installed do not forget edit credentials (<i>host, username, 
 To use some test data run following command: ```php Seeds\run_Seeds.php```. It will generate 6 users (every user has same password ```test123```)
 <br>
 
-When all tables are created you can use following command in your terminal to seed tables with test data: <br>
-```php Seeds\run.php```. 
-<br>
-<br>
-It will clean tables, set autoincrement ID to 1 and generate 6 users (<i>every user has same the password <strong>( test123 )</strong></i>) and their  activities.
-
 [![My GitHub Language Stats](https://github-readme-stats.vercel.app/api/top-langs/?username=Bravcoveoko&langs_count=8&theme=tokyonight)]()
