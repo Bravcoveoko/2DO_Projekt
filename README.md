@@ -13,7 +13,7 @@ After all dependencies are installed download stable version of JqueryUI (<stron
 
 ![stick](https://user-images.githubusercontent.com/41372194/137268733-7d1db3ec-dd30-413d-b6d4-3b4e7b332b1b.PNG)
 
-When everything is installed, run following command ```php Seeds\run_DB.php``` in your terminal which will automatically create DB (with name ```stickers```) and 2 tables (```users & activities```) in your <i>localhost</i>
+When everything is installed do not forget edit credentials (<i>host, username, password and port</i>) in ```classes\DB.php``` then run following command ```php Seeds\run_DB.php``` in your terminal which will automatically create DB (with name ```stickers```) and 2 tables (```users & activities```) in your <i>localhost</i>
 
 ```[Optional]```<br>
 To use some test data run following command: ```php Seeds\run_Seeds.php```. It will generate 6 users (every user has same password ```test123```)
