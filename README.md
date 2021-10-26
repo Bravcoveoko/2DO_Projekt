@@ -19,8 +19,6 @@ When everything is installed do not forget edit credentials (<i>host, username, 
 To use some test data run following command: ```php Seeds\run_Seeds.php```. It will generate 6 users (every user has same password ```test123```)
 <br>
 
-<strong>Do not forget edit credentials (<i>host, dbname, username, password and port</i>) in ```classes\DB.php``` class </strong>
-
 When all tables are created you can use following command in your terminal to seed tables with test data: <br>
 ```php Seeds\run.php```. 
 <br>
