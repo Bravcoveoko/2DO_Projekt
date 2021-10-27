@@ -1,7 +1,9 @@
 # Sticky notes
 
-
-- Install Node.js
+- Install ```PHP```
+- Install ```node.js```
+- Install ```web server``` for example ```laragon``` or ```xampp```
+- uncomment ```extension=pdo_mysql``` line in ```php.ini``` file in your web server application.
 
 run:<br>
 ```npm install``` command to install all dependencies from ```package.json```
@@ -13,8 +15,7 @@ After all dependencies are installed download stable version of JqueryUI (<stron
 
 ![stick](https://user-images.githubusercontent.com/41372194/137268733-7d1db3ec-dd30-413d-b6d4-3b4e7b332b1b.PNG)
 
-When everything is installed do not forget edit credentials (<i>host, username, password and port</i>) in ```classes\DB.php``` 
-<br><br>
+<br>
 
 To set up your DB and tables for it you have two options:
 1) run following command ```php Seeds\run_DB.php``` in your terminal which will automatically create DB (with name ```stickers```) and 2 tables (```users & activities```) in your <i>localhost</i> and that's all.
