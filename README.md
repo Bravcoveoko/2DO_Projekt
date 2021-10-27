@@ -13,10 +13,16 @@ After all dependencies are installed download stable version of JqueryUI (<stron
 
 ![stick](https://user-images.githubusercontent.com/41372194/137268733-7d1db3ec-dd30-413d-b6d4-3b4e7b332b1b.PNG)
 
-When everything is installed do not forget edit credentials (<i>host, username, password and port</i>) in ```classes\DB.php``` then run following command ```php Seeds\run_DB.php``` in your terminal which will automatically create DB (with name ```stickers```) and 2 tables (```users & activities```) in your <i>localhost</i>
+When everything is installed do not forget edit credentials (<i>host, username, password and port</i>) in ```classes\DB.php``` 
+<br><br>
+
+To set up your DB and tables for it you have two options:
+1) run following command ```php Seeds\run_DB.php``` in your terminal which will automatically create DB (with name ```stickers```) and 2 tables (```users & activities```) in your <i>localhost</i> and that's all.
+
+2) Manually crete DB inside your localhost and use ```2do_projekt.sql``` file to generate tables inside your localhost. Next you have to edit credentials (<i>host, dbname, username, password and port</i>) in constructor in ```classes\DB.php``` according your localhost and DB. ![db](https://user-images.githubusercontent.com/41372194/139012078-d65eda0c-b636-4e33-bfd0-8b753c940a1b.PNG)
 
 ```[Optional]```<br>
-To use some test data run following command: ```php Seeds\run_Seeds.php```. It will generate 6 users (every user has same password ```test123```)
+To use some test data run following command: ```php Seeds\run_Seeds.php```. It will generate 6 users (every user has same password ```test123```) and their activities.
 <br>
 
 [![My GitHub Language Stats](https://github-readme-stats.vercel.app/api/top-langs/?username=Bravcoveoko&langs_count=8&theme=tokyonight)]()
