@@ -30,6 +30,23 @@ class DB {
     private const SQL_ALTER_TABLE_USERS = 'ALTER TABLE users AUTO_INCREMENT = 1';
     private const SQL_ALTER_TABLE_ACTIVITIES = 'ALTER TABLE activities AUTO_INCREMENT = 1';
 
+    private const SQL_CREATE_ACTIVITIES_TABLE = 'CREATE TABLE activities (
+            id int(11) NOT NULL,
+            user_id int(11) NOT NULL,
+            x_position double NOT NULL,
+            y_position double NOT NULL,
+            color varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+            content text COLLATE utf8_unicode_ci NOT NULL,
+            created_at date NOT NULL,
+            is_trashed tinyint(1) NOT NULL)';
+
+    private const SQL_CREATE_USERS_TABLE = 'CREATE TABLE users (
+            id int(11) NOT NULL,
+            userName varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+            email varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+            password varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+            created_at date NOT NULL)';
+
     /**
      * DB constructor.
      */
@@ -191,37 +208,15 @@ class DB {
     }
 
     public function create_tables() {
-        $activities_table = "CREATE TABLE activities (
-            id int(11) NOT NULL,
-            user_id int(11) NOT NULL,
-            x_position double NOT NULL,
-            y_position double NOT NULL,
-            color varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-            content text COLLATE utf8_unicode_ci NOT NULL,
-            created_at date NOT NULL,
-            is_trashed tinyint(1) NOT NULL)";
-
-        $users_table = "CREATE TABLE users (
-            id int(11) NOT NULL,
-            userName varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-            email varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-            password varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-            created_at date NOT NULL)";
-
-        $alter_1 = "ALTER TABLE activities
-            ADD PRIMARY KEY (id),
-            ADD KEY user_id (user_id)";
-
-        $alter_2 = "ALTER TABLE users
-            ADD PRIMARY KEY (id)";
-
+        $alter_1 = "ALTER TABLE activities  ADD PRIMARY KEY (id), ADD KEY user_id (user_id)";
+        $alter_2 = "ALTER TABLE users ADD PRIMARY KEY (id)";
         $alter_3 = "ALTER TABLE activities MODIFY id int(11) NOT NULL AUTO_INCREMENT";
         $alter_4 = "ALTER TABLE users MODIFY id int(11) NOT NULL AUTO_INCREMENT";
         $alter_5 = "ALTER TABLE activities ADD CONSTRAINT activities_ibfk_1 FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE; COMMIT;";
 
+        $this->conn->exec(self::SQL_CREATE_USERS_TABLE);
+        $this->conn->exec(self::SQL_CREATE_ACTIVITIES_TABLE);
 
-        $this->conn->exec($activities_table);
-        $this->conn->exec($users_table);
         for ($index = 1; $index < 6; $index++) {
             $this->conn->exec(${"alter_$index"});
         }
