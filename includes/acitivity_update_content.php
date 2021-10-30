@@ -9,4 +9,4 @@ include '..\config.php';
 
 $DB->update_content_activity( $_POST['content'], $_POST['id']);
 
-echo json_encode(['id' => 'Hello']);
+echo json_encode(['success' => 1]);

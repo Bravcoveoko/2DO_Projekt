@@ -8,4 +8,4 @@ include '..\config.php';
 
 $DB->update_position_activity($_POST['xPos'], $_POST['yPos'], $_POST['id']);
 
-echo json_encode(['id' => 'Ahoj']);
+echo json_encode(['success' => 1]);

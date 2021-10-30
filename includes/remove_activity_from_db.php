@@ -8,4 +8,4 @@ include '..\config.php';
 
 $DB->remove_activity($_POST['id']);
 
-echo json_encode(['id' => 'Hello']);
+echo json_encode(['success' => 1]);

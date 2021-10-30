@@ -9,4 +9,4 @@ include '..\config.php';
 
 $DB->trash_activity($_POST['id']);
 
-echo json_encode(['id' => 'Hello']);
+echo json_encode(['success' => 1]);
