@@ -207,7 +207,8 @@ class DB {
 
 
     public function create_DB() {
-        $this->conn->exec("CREATE DATABASE IF NOT EXISTS stickers");
+        $SQL_CREATE_DB = 'CREATE DATABASE IF NOT EXISTS stickers';
+        $this->conn->exec($SQL_CREATE_DB);
     }
 
     public function delete_tables()  {
