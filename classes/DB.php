@@ -30,6 +30,9 @@ class DB {
     private const SQL_ALTER_TABLE_USERS = 'ALTER TABLE users AUTO_INCREMENT = 1';
     private const SQL_ALTER_TABLE_ACTIVITIES = 'ALTER TABLE activities AUTO_INCREMENT = 1';
 
+    private const SQL_DELETE_ACTIVITIES_TABLE = 'DROP TABLE IF EXISTS stickers.activities';
+    private const SQL_DELETE_USERS_TABLE = 'DROP TABLE IF EXISTS stickers.users';
+
     private const SQL_CREATE_ACTIVITIES_TABLE = 'CREATE TABLE activities (
             id int(11) NOT NULL,
             user_id int(11) NOT NULL,
@@ -205,6 +208,11 @@ class DB {
 
     public function create_DB() {
         $this->conn->exec("CREATE DATABASE IF NOT EXISTS stickers");
+    }
+
+    public function delete_tables()  {
+        $this->conn->exec(self::SQL_DELETE_ACTIVITIES_TABLE);
+        $this->conn->exec(self::SQL_DELETE_USERS_TABLE);
     }
 
     public function create_tables() {
