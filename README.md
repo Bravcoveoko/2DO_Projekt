@@ -18,7 +18,7 @@ After all dependencies are installed download stable version of JqueryUI (<stron
 <br>
 
 To set up your DB and tables for it you have two options:
-1) run following command ```php Seeds\run_DB.php``` in your terminal which will automatically create DB (with name ```stickers```) and 2 tables (```users & activities```) in your <i>localhost</i> and that's all.
+1) run following command ```php setup/comm.php``` in your terminal which will automatically create DB (with name ```stickers```). Next you will have several options to modify DB. Type ```migrate-fresh``` to create tables (```activities``` and ```users```) and then type: ```db-seed``` command to seed tables with data. Feel free to use another commands.
 
 2) Manually crete DB inside your localhost and use ```2do_projekt.sql``` file to generate tables inside your localhost. Next you have to edit credentials (<i>host, dbname, username, password and port</i>) in constructor in ```classes\DB.php``` according your localhost and DB. ![db](https://user-images.githubusercontent.com/41372194/139012078-d65eda0c-b636-4e33-bfd0-8b753c940a1b.PNG)
 
