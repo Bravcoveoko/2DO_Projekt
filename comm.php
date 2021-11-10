@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
-include 'setup/ActivitiesSeeder.php';
-include 'setup/UsersSeeder.php';
+include 'seeds/ActivitiesSeeder.php';
+include 'seeds/UsersSeeder.php';
 use Seeds\UsersSeeder;
 use Seeds\ActivitiesSeeder;
 
@@ -9,7 +9,7 @@ echo "\e[0;34mWhat do you want to do ? \e[0m\n";
 
 
 while (1) {
-    echo "\e[0;32mType:\nmigrate-fresh:     Deletes and recreates all tables\nmigrate-seed:      Deletes everything and recreates everything\ndb-seed:           Seeds database with data\ndel-seed:          Deletes all data\ndel-tables:        Deletes data and tables \e[0m\n";
+    echo "\e[0;32mType:\nmigrate-fresh:     Deletes and recreates all tables\nmigrate-seed:      Deletes everything and recreates everything\ndb-seed:           Seeds database with data\ndel-seed:          Deletes all data\ndel-tables:        Deletes data and tables\nclear:             To clear terminal \e[0m\n";
 
     echo "Type command: ";
 
@@ -45,10 +45,14 @@ while (1) {
             echo "\e[0;31mActivities table successfully deleted\e[0m\n";
             echo "\e[0;31mUsers table successfully deleted\e[0m\n";
             break;
+        case 'clear':
+            echo chr(27).chr(91).'H'.chr(27).chr(91).'J';
+            break;
         default:
             echo "\e[0;31mČo je veľa to je málo\e[0m\n";
-            exit;
+            break;
     }
+    echo "\e[0;34m*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\e[0m\n";
     fclose($handle);
 }
 
