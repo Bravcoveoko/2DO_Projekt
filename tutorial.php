@@ -21,7 +21,7 @@
 
     <br>
 
-    <img src="images/Picture2.PNG" class="mx-auto d-block" alt="..." width="1382" height="601">
+    <img src="images/Picture2.png" class="mx-auto d-block" alt="..." width="1382" height="601">
 
     <br>
     <hr class="line">
