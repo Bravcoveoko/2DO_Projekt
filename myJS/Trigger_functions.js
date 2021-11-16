@@ -32,7 +32,7 @@ draggable.on("click", ".fa-pencil", function() {
 
 // ************** CHECK *********************
 
-// Remove activity when we click on remove icon and play sound
+// Remove activity when we click on remove icon
 draggable.on("click", ".fa-times", function() {
 
     let id = $(this).attr('id');
