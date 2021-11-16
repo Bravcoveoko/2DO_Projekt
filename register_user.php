@@ -4,7 +4,7 @@
 
 require 'config.php';
 include(ROOT_PATH . '\classes\Checker.php');
-include(ROOT_PATH . '\classes\Authentication.php');
+require_once(ROOT_PATH . '\classes\Authentication.php');
 
 use classes\Checker;
 use classes\Routing;
